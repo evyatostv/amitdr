@@ -1,9 +1,8 @@
-import {getLocale} from 'next-intl/server';
 import {MotionReveal} from '@/components/MotionReveal';
 import {buildMetadata} from '@/lib/seo';
 
-export async function generateMetadata() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return buildMetadata({
     locale,
@@ -16,8 +15,8 @@ export async function generateMetadata() {
   });
 }
 
-export default async function ServicesPage() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function ServicesPage({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   const services =
     locale === 'he'

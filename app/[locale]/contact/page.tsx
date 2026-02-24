@@ -1,9 +1,8 @@
-import {getLocale} from 'next-intl/server';
 import {ContactForm} from '@/components/ContactForm';
 import {buildMetadata} from '@/lib/seo';
 
-export async function generateMetadata() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return buildMetadata({
     locale,
@@ -16,8 +15,8 @@ export async function generateMetadata() {
   });
 }
 
-export default async function ContactPage() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function ContactPage({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return (
     <section className="section-space">

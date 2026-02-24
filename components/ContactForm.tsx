@@ -1,26 +1,43 @@
 'use client';
 
-import {useFormState, useFormStatus} from 'react-dom';
+import {FormEvent, useState} from 'react';
 import type {Locale} from '@/lib/i18n/routing';
-import {initialState, submitContactForm} from '@/app/[locale]/contact/actions';
-
-function SubmitButton({locale}: {locale: Locale}) {
-  const {pending} = useFormStatus();
-
-  return (
-    <button type="submit" className="btn-primary w-full sm:w-auto" disabled={pending}>
-      {pending ? (locale === 'he' ? 'שולח...' : 'Sending...') : locale === 'he' ? 'שליחה' : 'Send'}
-    </button>
-  );
-}
 
 export function ContactForm({locale}: {locale: Locale}) {
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const name = String(formData.get('name') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const reason = String(formData.get('reason') || '').trim();
+
+    if (!name || !phone || !email || !reason) {
+      setStatus('error');
+      return;
+    }
+
+    const subject = encodeURIComponent(
+      locale === 'he' ? 'פנייה חדשה מהאתר' : 'New Website Inquiry'
+    );
+    const body = encodeURIComponent(
+      `${locale === 'he' ? 'שם' : 'Name'}: ${name}\n` +
+        `${locale === 'he' ? 'טלפון' : 'Phone'}: ${phone}\n` +
+        `${locale === 'he' ? 'אימייל' : 'Email'}: ${email}\n` +
+        `${locale === 'he' ? 'סיבת פנייה' : 'Reason'}: ${reason}`
+    );
+
+    window.location.href = `mailto:info@amitdr.com?subject=${subject}&body=${body}`;
+    setStatus('success');
+    event.currentTarget.reset();
+  };
 
   return (
-    <form action={formAction} className="card space-y-4" noValidate>
-      <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
-
+    <form onSubmit={handleSubmit} className="card space-y-4" noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="text-sm font-medium text-slate-800">
           {locale === 'he' ? 'שם מלא' : 'Full name'}
@@ -43,17 +60,21 @@ export function ContactForm({locale}: {locale: Locale}) {
       </label>
 
       <div className="flex flex-wrap items-center gap-3">
-        <SubmitButton locale={locale} />
-        {state.status !== 'idle' && (
+        <button type="submit" className="btn-primary w-full sm:w-auto">
+          {locale === 'he' ? 'שליחה' : 'Send'}
+        </button>
+        {status !== 'idle' && (
           <p
-            className={`text-sm ${state.status === 'success' ? 'text-emerald-700' : 'text-red-700'}`}
+            className={`text-sm ${status === 'success' ? 'text-emerald-700' : 'text-red-700'}`}
             aria-live="polite"
           >
             {locale === 'he'
-              ? state.status === 'success'
-                ? 'הפנייה נשלחה בהצלחה.'
-                : 'לא ניתן לשלוח כרגע. נסו שוב או התקשרו 03-9775355.'
-              : state.message}
+              ? status === 'success'
+                ? 'הטופס הוכן לשליחה במייל.'
+                : 'אנא מלאו את כל השדות.'
+              : status === 'success'
+                ? 'Your mail app was opened with the prepared message.'
+                : 'Please complete all fields.'}
           </p>
         )}
       </div>

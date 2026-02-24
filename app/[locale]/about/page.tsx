@@ -1,13 +1,12 @@
-import {getLocale} from 'next-intl/server';
 import {MotionReveal} from '@/components/MotionReveal';
 import {buildMetadata} from '@/lib/seo';
 
-export async function generateMetadata() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return buildMetadata({
     locale,
-    title: locale === 'he' ? 'אודות ד״ר עמית דרוין' : 'About Dr Amit Druyan',
+    title: locale === 'he' ? 'אודות ד״ר עמית דרוין' : 'About Dr Amit Druvin',
     description:
       locale === 'he'
         ? 'רופא בכיר ביחידה הראומטולוגית ובמרפאת FMF בשיבא תל השומר.'
@@ -16,8 +15,8 @@ export async function generateMetadata() {
   });
 }
 
-export default async function AboutPage() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return (
     <section className="section-space">
@@ -56,7 +55,7 @@ export default async function AboutPage() {
             ) : (
               <div className="space-y-4 text-slate-700">
                 <p>
-                  Dr Amit Druyan is a senior physician in the Rheumatology Unit and FMF clinic at Sheba Medical
+                  Dr Amit Druvin is a senior physician in the Rheumatology Unit and FMF clinic at Sheba Medical
                   Center, Tel Hashomer. As a specialist in Internal Medicine and Rheumatology, he treats a wide range
                   of chronic inflammatory rheumatic diseases including RA, ankylosing spondylitis, FMF, gout,
                   vasculitis, scleroderma and SLE.

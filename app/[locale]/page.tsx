@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Script from 'next/script';
-import {getLocale} from 'next-intl/server';
 import {Link} from '@/lib/i18n/navigation';
 import {conditionItems} from '@/lib/content';
 import {ConditionCard} from '@/components/ConditionCard';
@@ -8,15 +7,15 @@ import {MotionReveal} from '@/components/MotionReveal';
 import {HomeInfoPopups} from '@/components/HomeInfoPopups';
 import {buildMetadata, baseSiteUrl} from '@/lib/seo';
 
-export async function generateMetadata() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return buildMetadata({
     locale,
     title:
       locale === 'he'
-        ? 'ד"ר עמית דרויאן | ריאומטולוג בכיר'
-        : 'Dr Amit Druyan | Senior Rheumatologist',
+        ? 'ד"ר עמית דרוין | ריאומטולוג בכיר'
+        : 'Dr Amit Druvin | Senior Rheumatologist',
     description:
       locale === 'he'
         ? 'רופא בכיר ביחידה לראומטולוגיה ובמרפאת FMF בשיבא. קביעת תור מהירה.'
@@ -25,13 +24,13 @@ export async function generateMetadata() {
   });
 }
 
-export default async function HomePage() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   const physicianSchema = {
     '@context': 'https://schema.org',
     '@type': 'Physician',
-    name: 'Dr Amit Druyan',
+    name: 'Dr Amit Druvin',
     medicalSpecialty: 'Rheumatology',
     worksFor: 'Sheba Medical Center',
     knowsAbout: [
@@ -50,7 +49,7 @@ export default async function HomePage() {
   const clinicSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
-    name: 'Dr Amit Druyan Clinic',
+    name: 'Dr Amit Druvin Clinic',
     areaServed: 'Israel',
     telephone: '+972-3-9775355',
     url: baseSiteUrl,
@@ -102,7 +101,7 @@ export default async function HomePage() {
                 {locale === 'he' ? 'ריאומטולוגיה מתקדמת | שיבא תל השומר' : 'Advanced Rheumatology | Sheba Tel Hashomer'}
               </p>
               <h1 className="mb-4 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">
-                {locale === 'he' ? 'ד"ר עמית דרויאן' : 'Dr Amit Druyan'}
+                {locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druvin'}
                 <span className="mt-2 block text-2xl font-bold text-brand-700 sm:text-3xl">
                   {locale === 'he' ? 'טיפול אישי, מדויק ונגיש' : 'Personal, Precise and Accessible Care'}
                 </span>
@@ -128,7 +127,7 @@ export default async function HomePage() {
               <div className="relative overflow-hidden rounded-2xl border border-brand-100 bg-white">
                 <Image
                   src="/images/amit-doctor-portrait.jpg"
-                  alt={locale === 'he' ? 'ד"ר עמית דרויאן' : 'Dr Amit Druyan'}
+                  alt={locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druvin'}
                   width={900}
                   height={1100}
                   className="h-auto w-full object-cover"
@@ -136,7 +135,7 @@ export default async function HomePage() {
                 />
               </div>
               <p className="mt-3 text-sm font-semibold text-slate-800">
-                {locale === 'he' ? 'ד"ר עמית דרויאן | מומחה לרפואה פנימית וראומטולוגיה' : 'Dr Amit Druyan | Internal Medicine & Rheumatology'}
+                {locale === 'he' ? 'ד"ר עמית דרוין | מומחה לרפואה פנימית וראומטולוגיה' : 'Dr Amit Druvin | Internal Medicine & Rheumatology'}
               </p>
             </aside>
           </MotionReveal>
@@ -172,7 +171,7 @@ export default async function HomePage() {
           <MotionReveal>
             <article className="card bg-gradient-to-br from-white to-brand-50/50 p-6">
               <h2 className="mb-3 text-3xl font-black text-slate-900">
-                {locale === 'he' ? 'אודות ד"ר עמית דרויאן' : 'About Dr Amit Druyan'}
+                {locale === 'he' ? 'אודות ד"ר עמית דרוין' : 'About Dr Amit Druvin'}
               </h2>
               <p className="mb-4 text-slate-700">
                 {locale === 'he'

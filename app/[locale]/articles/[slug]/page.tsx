@@ -1,5 +1,4 @@
 import {notFound} from 'next/navigation';
-import {getLocale} from 'next-intl/server';
 import {articleItems, getArticleBySlug} from '@/lib/content';
 import {CheckInsightLink} from '@/components/CheckInsightLink';
 import {buildMetadata} from '@/lib/seo';
@@ -8,8 +7,8 @@ export function generateStaticParams() {
   return articleItems.map((article) => ({slug: article.slug}));
 }
 
-export async function generateMetadata({params}: {params: {slug: string}}) {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'; slug: string}}) {
+  const locale = params.locale;
   const article = getArticleBySlug(params.slug);
 
   if (!article) {
@@ -24,8 +23,8 @@ export async function generateMetadata({params}: {params: {slug: string}}) {
   });
 }
 
-export default async function ArticleDetailPage({params}: {params: {slug: string}}) {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function ArticleDetailPage({params}: {params: {locale: 'he' | 'en'; slug: string}}) {
+  const locale = params.locale;
   const article = getArticleBySlug(params.slug);
 
   if (!article) {

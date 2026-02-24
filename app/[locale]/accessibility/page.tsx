@@ -1,20 +1,19 @@
-import {getLocale} from 'next-intl/server';
 import {buildMetadata} from '@/lib/seo';
 
-export async function generateMetadata() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return buildMetadata({
     locale,
     title: locale === 'he' ? 'הצהרת נגישות' : 'Accessibility Statement',
     description:
-      locale === 'he' ? 'התאמות נגישות באתר ד"ר עמית דרויאן.' : 'Accessibility adjustments on Dr Amit Druyan website.',
+      locale === 'he' ? 'התאמות נגישות באתר ד"ר עמית דרוין.' : 'Accessibility adjustments on Dr Amit Druvin website.',
     path: locale === 'he' ? '/accessibility' : '/en/accessibility'
   });
 }
 
-export default async function AccessibilityPage() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function AccessibilityPage({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   const points =
     locale === 'he'

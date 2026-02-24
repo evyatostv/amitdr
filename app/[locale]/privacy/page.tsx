@@ -1,8 +1,7 @@
-import {getLocale} from 'next-intl/server';
 import {buildMetadata} from '@/lib/seo';
 
-export async function generateMetadata() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   return buildMetadata({
     locale,
@@ -13,8 +12,8 @@ export async function generateMetadata() {
   });
 }
 
-export default async function PrivacyPage() {
-  const locale = (await getLocale()) as 'he' | 'en';
+export default async function PrivacyPage({params}: {params: {locale: 'he' | 'en'}}) {
+  const locale = params.locale;
 
   const points =
     locale === 'he'

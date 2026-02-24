@@ -1,4 +1,4 @@
-# Dr Amit Druyan Website (Next.js)
+# Dr Amit Druvin Website (Next.js)
 
 ## Stack
 - Next.js App Router + TypeScript

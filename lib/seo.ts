@@ -32,7 +32,7 @@ export function buildMetadata({
       type: 'website',
       locale: locale === 'he' ? 'he_IL' : 'en_US',
       url,
-      siteName: 'Dr Amit Druyan'
+      siteName: 'Dr Amit Druvin'
     },
     twitter: {
       card: 'summary_large_image',
