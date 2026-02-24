@@ -1,0 +1,25 @@
+{
+  "siteName": "ד\"ר עמית דרויאן",
+  "nav": {
+    "home": "בית",
+    "about": "אודות",
+    "conditions": "מחלות וטיפולים",
+    "services": "שירותים",
+    "articles": "מאמרים וסרטונים",
+    "faq": "שאלות נפוצות",
+    "book": "קביעת תור",
+    "contact": "יצירת קשר",
+    "privacy": "מדיניות פרטיות",
+    "accessibility": "הצהרת נגישות"
+  },
+  "common": {
+    "bookNow": "קבעו תור",
+    "callNow": "התקשרו",
+    "languageSwitch": "English",
+    "whatsapp": "וואטסאפ"
+  },
+  "footer": {
+    "rights": "כל הזכויות שמורות",
+    "address": "שיבא תל השומר, רמת גן"
+  }
+}

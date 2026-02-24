@@ -1,0 +1,25 @@
+{
+  "siteName": "Dr Amit Druyan",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "conditions": "Conditions & Treatments",
+    "services": "Services",
+    "articles": "Articles & Videos",
+    "faq": "FAQ",
+    "book": "Book Appointment",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "accessibility": "Accessibility"
+  },
+  "common": {
+    "bookNow": "Book Appointment",
+    "callNow": "Call",
+    "languageSwitch": "עברית",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "address": "Sheba Medical Center, Tel Hashomer"
+  }
+}

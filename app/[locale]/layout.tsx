@@ -1,0 +1,57 @@
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages, unstable_setRequestLocale} from 'next-intl/server';
+import {notFound} from 'next/navigation';
+import {Heebo} from 'next/font/google';
+import {Header} from '@/components/Header';
+import {Footer} from '@/components/Footer';
+import {WhatsappButton} from '@/components/WhatsappButton';
+import {routing} from '@/lib/i18n/routing';
+
+const heebo = Heebo({
+  subsets: ['hebrew', 'latin'],
+  variable: '--font-heebo'
+});
+
+export const dynamic = "force-dynamic";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
+
+export default async function LocaleLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: {locale: string};
+}) {
+  const {locale} = params;
+
+  if (!routing.locales.includes(locale as 'he' | 'en')) {
+    notFound();
+  }
+
+  unstable_setRequestLocale(locale);
+  const messages = await getMessages();
+
+  return (
+    <div
+      className={`${heebo.variable} font-sans`}
+      style={{fontFamily: 'var(--font-heebo), system-ui, -apple-system, sans-serif'}}
+      lang={locale}
+      dir={locale === 'he' ? 'rtl' : 'ltr'}
+    >
+      <NextIntlClientProvider messages={messages}>
+        <div className="flex min-h-screen flex-col">
+          <a href="#main-content" className="skip-link">
+            {locale === 'he' ? 'מעבר לתוכן הראשי' : 'Skip to main content'}
+          </a>
+          <Header />
+          <main id="main-content" className="flex-1">{children}</main>
+          <Footer />
+          <WhatsappButton />
+        </div>
+      </NextIntlClientProvider>
+    </div>
+  );
+}
