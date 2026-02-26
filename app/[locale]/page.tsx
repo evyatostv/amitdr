@@ -7,6 +7,7 @@ import {MotionReveal} from '@/components/MotionReveal';
 import {HomeInfoPopups} from '@/components/HomeInfoPopups';
 import {HeroBubbles} from '@/components/HeroBubbles';
 import {buildMetadata, baseSiteUrl} from '@/lib/seo';
+import {withBasePath} from '@/lib/asset-path';
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
@@ -126,7 +127,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
             <aside className="glass overflow-hidden rounded-3xl p-4 shadow-soft sm:p-5">
               <div className="relative overflow-hidden rounded-2xl border border-brand-100 bg-white">
                 <Image
-                  src="/images/amit-doctor-portrait.jpg"
+                  src={withBasePath('/images/amit-doctor-portrait.jpg')}
                   alt={locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druvin'}
                   width={900}
                   height={1100}

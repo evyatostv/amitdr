@@ -1,6 +1,7 @@
 import {MotionReveal} from '@/components/MotionReveal';
 import {buildMetadata} from '@/lib/seo';
 import Image from 'next/image';
+import {withBasePath} from '@/lib/asset-path';
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
@@ -71,7 +72,7 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
 
               <div className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-soft">
                 <Image
-                  src="/images/amit-about.jpg"
+                  src={withBasePath('/images/amit-about.jpg')}
                   alt={locale === 'he' ? 'ד״ר עמית דרוין' : 'Dr Amit Druvin'}
                   width={800}
                   height={800}

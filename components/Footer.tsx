@@ -3,6 +3,7 @@
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
 import {Link} from '@/lib/i18n/navigation';
+import {withBasePath} from '@/lib/asset-path';
 
 export function Footer() {
   const t = useTranslations();
@@ -20,7 +21,7 @@ export function Footer() {
         </div>
         <p>{t('footer.address')}</p>
         <div className="mt-2 flex items-center gap-2">
-          <Image src="/images/logo-icon.png" alt={t('siteName')} width={24} height={24} className="rounded-full object-contain" />
+          <Image src={withBasePath('/images/logo-icon.png')} alt={t('siteName')} width={24} height={24} className="rounded-full object-contain" />
           <p>
             {t('siteName')} | {new Date().getFullYear()} | {t('footer.rights')}
           </p>

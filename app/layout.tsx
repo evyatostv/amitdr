@@ -1,5 +1,6 @@
 import './globals.css';
 import type {Metadata} from 'next';
+import {withBasePath} from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://amitdr.com'),
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   description: 'Rheumatology care in Israel',
   icons: {
     icon: [
-      {url: '/images/logo-icon.png', type: 'image/png'},
-      {url: '/icon.png', type: 'image/png'}
+      {url: withBasePath('/images/logo-icon.png'), type: 'image/png'},
+      {url: withBasePath('/icon.png'), type: 'image/png'}
     ],
-    apple: [{url: '/images/logo-icon.png', type: 'image/png'}],
-    shortcut: ['/images/logo-icon.png']
+    apple: [{url: withBasePath('/images/logo-icon.png'), type: 'image/png'}],
+    shortcut: [withBasePath('/images/logo-icon.png')]
   }
 };
 

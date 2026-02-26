@@ -4,6 +4,7 @@ import {useState} from 'react';
 import Image from 'next/image';
 import {useLocale, useTranslations} from 'next-intl';
 import {Link, usePathname} from '@/lib/i18n/navigation';
+import {withBasePath} from '@/lib/asset-path';
 
 const navItems = [
   {href: '/', key: 'home'},
@@ -30,7 +31,7 @@ export function Header() {
           aria-label={t('siteName')}
         >
           <Image
-            src="/images/logo-icon.png"
+            src={withBasePath('/images/logo-icon.png')}
             alt={t('siteName')}
             width={44}
             height={44}
