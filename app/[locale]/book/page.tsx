@@ -38,7 +38,7 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
         <MotionReveal>
           <article className="card bg-gradient-to-br from-white to-brand-50/60">
             <h2 className="mb-2 text-lg font-semibold text-slate-900">
-              {locale === 'he' ? 'תור פרטי אונליין' : 'Private Online Booking'}
+              {locale === 'he' ? 'קביעת תור בפרטי' : 'Private Booking'}
             </h2>
             <p className="mb-3 text-sm text-slate-700">
               {locale === 'he' ? 'קביעת תור באופן עצמאי בזמן שנוח לכם.' : 'Book directly online at your preferred time.'}
@@ -56,10 +56,15 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
             </h2>
             <p className="mb-3 text-sm text-slate-700">
               {locale === 'he'
-                ? 'מסלול קביעת תור דרך ערוצי מכבי.'
+                ? 'מטופלי מכבי יתקבלו דרך הקופה. יש לבחור - קביעת תור למטופלי מכבי.'
                 : 'Appointment flow through Maccabi channels.'}
             </p>
-            <a href="#" className="btn-secondary w-full text-center">
+            <a
+              href="https://www.maccabi4u.co.il/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary w-full text-center"
+            >
               {locale === 'he' ? 'מעבר למסלול מכבי' : 'Open Maccabi Flow'}
             </a>
           </article>
@@ -82,10 +87,15 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
             <article className="card">
               <h2 className="mb-2 text-lg font-semibold text-slate-900">{locale === 'he' ? 'מה להביא לביקור' : 'What to Bring'}</h2>
               <ul className="list-disc space-y-1 ps-5 text-sm text-slate-700">
-                <li>{locale === 'he' ? 'תעודה מזהה וכרטיס קופה' : 'ID and health fund card'}</li>
-                <li>{locale === 'he' ? 'סיכומים רפואיים קודמים' : 'Previous medical summaries'}</li>
-                <li>{locale === 'he' ? 'בדיקות דם והדמיה עדכניות' : 'Recent blood tests and imaging'}</li>
-                <li>{locale === 'he' ? 'רשימת תרופות עדכנית' : 'Current medication list'}</li>
+                <li>{locale === 'he' ? 'סיכומים רפואיים' : 'Medical summaries'}</li>
+                <li>{locale === 'he' ? 'בדיקות דם עדכניות' : 'Recent blood tests'}</li>
+                <li>{locale === 'he' ? 'הדמיות' : 'Imaging studies'}</li>
+                <li>{locale === 'he' ? 'רשימת תרופות' : 'Medication list'}</li>
+                <li>
+                  {locale === 'he'
+                    ? 'מומלץ לקראת הביקור למלא את השאלון בקישור הבא: https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954'
+                    : 'Recommended before the visit: complete the questionnaire here: https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954'}
+                </li>
               </ul>
             </article>
           </MotionReveal>
@@ -95,8 +105,8 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
               <h2 className="mb-2 text-lg font-semibold text-slate-900">{locale === 'he' ? 'מיקום מרפאה' : 'Clinic Location'}</h2>
               <p className="text-sm text-slate-700">
                 {locale === 'he'
-                  ? 'מרכז רפואי שיבא, תל השומר, רמת גן. פרטי הגעה מדויקים נשלחים לאחר אישור התור.'
-                  : 'Sheba Medical Center, Tel Hashomer, Ramat Gan. Exact arrival details are sent after appointment confirmation.'}
+                  ? 'מרפאת ג\'יי מדיקל, דרך יצחק רבין 1, מגדלי Global Towers, בניין A קומה 12.'
+                  : 'J Medical Clinic, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12.'}
               </p>
             </article>
           </MotionReveal>

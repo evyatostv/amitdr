@@ -5,6 +5,7 @@ import {conditionItems} from '@/lib/content';
 import {ConditionCard} from '@/components/ConditionCard';
 import {MotionReveal} from '@/components/MotionReveal';
 import {HomeInfoPopups} from '@/components/HomeInfoPopups';
+import {HeroBubbles} from '@/components/HeroBubbles';
 import {buildMetadata, baseSiteUrl} from '@/lib/seo';
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
@@ -56,25 +57,25 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IL',
-      addressLocality: 'Ramat Gan',
-      streetAddress: 'Sheba Medical Center, Tel Hashomer'
+      addressLocality: 'Petah Tikva',
+      streetAddress: 'J Medical, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12'
     }
   };
 
   const treatmentHighlights =
     locale === 'he'
       ? [
+          {icon: '🦋', label: 'FMF'},
           {icon: '🧬', label: 'וסקוליטיס'},
           {icon: '🦴', label: 'דלקות מפרקים'},
-          {icon: '🦋', label: 'FMF'},
           {icon: '✋', label: 'מחלות רקמת חיבור'},
           {icon: '🧪', label: 'לופוס (SLE)'},
           {icon: '🧷', label: 'סקלרודרמה'}
         ]
       : [
+          {icon: '🦋', label: 'FMF'},
           {icon: '🧬', label: 'Vasculitis'},
           {icon: '🦴', label: 'Inflammatory Arthritis'},
-          {icon: '🦋', label: 'FMF'},
           {icon: '✋', label: 'Connective Tissue Disease'},
           {icon: '🧪', label: 'Lupus (SLE)'},
           {icon: '🧷', label: 'Scleroderma'}
@@ -91,24 +92,23 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
 
       <section className="hero-shell section-space pt-12 sm:pt-16">
         <div className="hero-grid" />
-        <div className="orb orb-a" />
-        <div className="orb orb-b" />
+        <HeroBubbles />
 
         <div className="container-main relative grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <MotionReveal>
             <div>
               <p className="mb-4 inline-flex rounded-full border border-brand-200 bg-white/85 px-4 py-1.5 text-xs font-semibold tracking-wide text-brand-700">
-                {locale === 'he' ? 'ריאומטולוגיה מתקדמת | שיבא תל השומר' : 'Advanced Rheumatology | Sheba Tel Hashomer'}
+                {locale === 'he' ? 'טיפול ראומטולוגי מותאם אישית' : 'Personalized Rheumatology Care'}
               </p>
               <h1 className="mb-4 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">
                 {locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druvin'}
                 <span className="mt-2 block text-2xl font-bold text-brand-700 sm:text-3xl">
-                  {locale === 'he' ? 'טיפול אישי, מדויק ונגיש' : 'Personal, Precise and Accessible Care'}
+                  {locale === 'he' ? 'ראומטולוג מומחה' : 'Expert Rheumatologist'}
                 </span>
               </h1>
               <p className="mb-6 max-w-2xl text-base text-slate-700 sm:text-lg">
                 {locale === 'he'
-                  ? 'רופא בכיר ביחידה לראומטולוגיה ובמרפאת FMF. אבחון מקצועי, תוכנית טיפול ברורה וליווי לאורך כל הדרך.'
+                  ? 'מומחה לראומטולוגיה ורפואה פנימית, נותן מענה למגוון מחלות דלקתיות ראומטולוגיות. מאבחן, מייעץ, מבצע מעקב אחר פעילות המחלה, ומתאים טיפול אישי המבוסס על הספרות המקצועית העדכנית ביותר.'
                   : 'Senior physician in the Rheumatology Unit and FMF clinic. Professional diagnosis, clear plans and close follow-up.'}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -135,7 +135,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
                 />
               </div>
               <p className="mt-3 text-sm font-semibold text-slate-800">
-                {locale === 'he' ? 'ד"ר עמית דרוין | מומחה לרפואה פנימית וראומטולוגיה' : 'Dr Amit Druvin | Internal Medicine & Rheumatology'}
+                {locale === 'he' ? 'ד"ר עמית דרוין | מומחה לראומטולוגיה ורפואה פנימית' : 'Dr Amit Druvin | Rheumatology & Internal Medicine'}
               </p>
             </aside>
           </MotionReveal>
@@ -191,8 +191,16 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
                 {locale === 'he' ? 'שנות ניסיון ברפואה פנימית וריאומטולוגיה' : 'Years of internal medicine and rheumatology experience'}
               </p>
               <div className="mt-4 space-y-2 text-sm text-slate-700">
-                <p>FMF | Sheba Tel Hashomer</p>
-                <p>JMEDICAL | 03-9775355</p>
+                <p>
+                  {locale === 'he'
+                    ? 'רופא מומחה בכיר ביחידה הראומטולוגית ומחלקה פנימית ו\' בתל השומר. מרכז תחום מחלות מפרקים חריפות במאושפזים.'
+                    : "Senior specialist physician in the rheumatology unit and Internal Medicine Department V at Tel Hashomer. Leads acute inpatient arthritis care."}
+                </p>
+                <p>
+                  {locale === 'he'
+                    ? 'מרצה לרפואה פנימית בבית הספר לרפואה של אוניברסיטת תל אביב.'
+                    : 'Lecturer in internal medicine at the Tel Aviv University School of Medicine.'}
+                </p>
               </div>
             </article>
           </MotionReveal>
@@ -207,14 +215,16 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
             </h2>
             <p className="mb-6 max-w-3xl text-slate-700">
               {locale === 'he'
-                ? 'אבחון וטיפול בדלקות מפרקים ומחלות אוטואימוניות בגישה מותאמת אישית.'
+                ? 'טיפול בכלל תחומי הראומטולוגיה - דלקת מפרקים שגרונתית (RA), דלקת חוליות מקשחת (AS), דלקת מפרקים פסוריאטית (PSA), ספונדילוארתרופתיות, זאבת (לופוס - SLE), סקלרודרמה, וסקוליטיס, פולימיאלגיה ראומטיקה (PMR), קדחת ים תיכונית (FMF), בכצ\'ט, שיגדון (גאוט GOUT).'
                 : 'Personalized diagnosis and care for inflammatory and autoimmune rheumatic diseases.'}
             </p>
           </MotionReveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {conditionItems.slice(0, 6).map((item, index) => (
               <MotionReveal key={item.slug} delay={0.05 * index}>
-                <ConditionCard item={item} locale={locale} />
+                <div className="h-full">
+                  <ConditionCard item={item} locale={locale} />
+                </div>
               </MotionReveal>
             ))}
           </div>

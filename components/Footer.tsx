@@ -1,6 +1,7 @@
 'use client';
 
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
 import {Link} from '@/lib/i18n/navigation';
 
 export function Footer() {
@@ -18,9 +19,12 @@ export function Footer() {
           </Link>
         </div>
         <p>{t('footer.address')}</p>
-        <p>
-          {t('siteName')} | {new Date().getFullYear()} | {t('footer.rights')}
-        </p>
+        <div className="mt-2 flex items-center gap-2">
+          <Image src="/images/logo-icon.png" alt={t('siteName')} width={24} height={24} className="rounded-full object-contain" />
+          <p>
+            {t('siteName')} | {new Date().getFullYear()} | {t('footer.rights')}
+          </p>
+        </div>
       </div>
     </footer>
   );

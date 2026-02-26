@@ -1,6 +1,7 @@
 'use client';
 
 import {useState} from 'react';
+import Image from 'next/image';
 import {useLocale, useTranslations} from 'next-intl';
 import {Link, usePathname} from '@/lib/i18n/navigation';
 
@@ -25,10 +26,17 @@ export function Header() {
       <div className="container-main flex items-center justify-between gap-3 py-3">
         <Link
           href="/"
-          className="rounded-full border border-brand-100 bg-brand-50/70 px-4 py-2 text-base font-bold text-brand-700"
+          className="inline-flex items-center p-0"
           aria-label={t('siteName')}
         >
-          {t('siteName')}
+          <Image
+            src="/images/logo-icon.png"
+            alt={t('siteName')}
+            width={44}
+            height={44}
+            className="object-contain"
+            priority
+          />
         </Link>
 
         <button

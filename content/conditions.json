@@ -1,30 +1,48 @@
 [
   {
+    "slug": "fmf",
+    "nameHe": "קדחת ים תיכונית (FMF)",
+    "nameEn": "Familial Mediterranean Fever (FMF)",
+    "shortHe": "ד\"ר דרוין הינו רופא במרפאת ה FMF בבית החולים שיבא.",
+    "shortEn": "Dr Druvin is a physician in the FMF clinic at Sheba Medical Center.",
+    "treatmentsHe": ["אבחון קליני של קדחת ים תיכונית", "טיפול במקרי FMF מורכבים", "איזון המחלה"],
+    "treatmentsEn": ["Clinical diagnosis of FMF", "Management of complex FMF cases", "Disease stabilization"]
+  },
+  {
     "slug": "ra",
-    "nameHe": "דלקת מפרקים שגרונית (RA)",
-    "nameEn": "Rheumatoid Arthritis (RA)",
-    "shortHe": "אבחון מוקדם וטיפול מותאם להפחתת כאב ושמירה על תפקוד.",
+    "nameHe": "דלקות מפרקים",
+    "nameEn": "Inflammatory Arthritis",
+    "shortHe": "אבחון מוקדם וטיפול מותאם להפחתת כאב ושמירה על התפקוד.",
     "shortEn": "Early diagnosis and tailored treatment to reduce pain and preserve function.",
-    "treatmentsHe": ["הערכה קלינית ומעבדתית", "טיפול תרופתי מותאם", "מעקב תגובה ותופעות לוואי"],
-    "treatmentsEn": ["Clinical and laboratory evaluation", "Personalized medical therapy", "Response and safety follow-up"]
+    "treatmentsHe": ["דלקת מפרקים שגרונתית (RA)", "דלקת חוליות מקשחת (AS)", "דלקת מפרקים פסוריאטית (PSA)"],
+    "treatmentsEn": ["Rheumatoid arthritis (RA)", "Ankylosing spondylitis (AS)", "Psoriatic arthritis (PsA)"]
+  },
+  {
+    "slug": "gout",
+    "nameHe": "שיגדון (Gout)",
+    "nameEn": "Gout",
+    "shortHe": "שליטה בהתקפים, איזון חומצה אורית ומניעת פגיעה מפרקית.",
+    "shortEn": "Controlling flares, lowering uric acid and preventing joint damage.",
+    "treatmentsHe": ["טיפול בהתקף חריף", "טיפול מניעתי ארוך טווח", "איזון חומצה אורית"],
+    "treatmentsEn": ["Acute flare treatment", "Long-term preventive treatment", "Uric acid control"]
   },
   {
     "slug": "sle",
-    "nameHe": "לופוס (SLE)",
+    "nameHe": "זאבת (לופוס - SLE)",
     "nameEn": "Systemic Lupus Erythematosus (SLE)",
-    "shortHe": "איזון מחלה רב-מערכתית עם תוכנית טיפול ומעקב סדיר.",
-    "shortEn": "Managing multisystem disease with a clear treatment and follow-up plan.",
-    "treatmentsHe": ["התאמת טיפול לפי מעורבות איברים", "מעקב פעילות מחלה", "תיאום עם מומחים נוספים"],
-    "treatmentsEn": ["Organ-specific treatment planning", "Disease activity monitoring", "Coordination with other specialists"]
+    "shortHe": "אבחון וטיפול בזאבת.",
+    "shortEn": "Diagnosis and treatment of lupus.",
+    "treatmentsHe": ["טיפול מותאם אישית", "טיפולים מתקדמים", "מעקב ומניעת נזק", "הפחתת מינון סטרואידים"],
+    "treatmentsEn": ["Personalized treatment", "Advanced therapies", "Monitoring and damage prevention", "Steroid dose reduction"]
   },
   {
     "slug": "scleroderma",
     "nameHe": "סקלרודרמה",
     "nameEn": "Scleroderma",
-    "shortHe": "מעקב והכוונה לטיפול בתסמיני עור, כלי דם ואיברים פנימיים.",
-    "shortEn": "Evaluation and management of skin, vascular and internal organ involvement.",
-    "treatmentsHe": ["בדיקת מעורבות איברים", "טיפול בתסמינים", "מעקב תקופתי"],
-    "treatmentsEn": ["Organ involvement assessment", "Symptom-focused treatment", "Scheduled follow-up"]
+    "shortHe": "אבחנה וטיפול בסקלרודרמה.",
+    "shortEn": "Diagnosis and treatment of scleroderma.",
+    "treatmentsHe": ["ביצוע קפילרוסקופיה", "טיפול מותאם אישית", "ייעוץ והכוונה"],
+    "treatmentsEn": ["Capillaroscopy", "Personalized treatment", "Consultation and guidance"]
   },
   {
     "slug": "vasculitis",
@@ -32,34 +50,7 @@
     "nameEn": "Vasculitis",
     "shortHe": "אבחון מדויק של דלקת כלי דם והפניה לבירור מתקדם לפי צורך.",
     "shortEn": "Precise diagnosis of blood vessel inflammation with advanced workup when needed.",
-    "treatmentsHe": ["בירור דלקתי ואימונולוגי", "התאמת טיפול מדורג", "ניטור תגובה"],
-    "treatmentsEn": ["Inflammatory and immunologic workup", "Stepwise treatment adjustment", "Treatment response monitoring"]
-  },
-  {
-    "slug": "gout",
-    "nameHe": "שיגדון (Gout)",
-    "nameEn": "Gout",
-    "shortHe": "שליטה בהתקפים, איזון חומצת שתן ומניעת פגיעה מפרקית.",
-    "shortEn": "Controlling flares, lowering uric acid and preventing joint damage.",
-    "treatmentsHe": ["טיפול בהתקף חריף", "טיפול מניעתי ארוך טווח", "הדרכה תזונתית בסיסית"],
-    "treatmentsEn": ["Acute flare treatment", "Long-term urate-lowering therapy", "Basic dietary guidance"]
-  },
-  {
-    "slug": "as",
-    "nameHe": "דלקת חוליות מקשחת",
-    "nameEn": "Ankylosing Spondylitis",
-    "shortHe": "הפחתת כאב ונוקשות ושימור איכות חיים לאורך זמן.",
-    "shortEn": "Reducing pain and stiffness while preserving long-term quality of life.",
-    "treatmentsHe": ["אבחון לפי קליניקה והדמיה", "טיפול תרופתי", "הכוונה לפעילות גופנית מותאמת"],
-    "treatmentsEn": ["Diagnosis by clinical and imaging findings", "Medical treatment", "Guidance for adapted physical activity"]
-  },
-  {
-    "slug": "fmf",
-    "nameHe": "קדחת ים תיכונית משפחתית (FMF)",
-    "nameEn": "Familial Mediterranean Fever (FMF)",
-    "shortHe": "ניסיון רב באבחון ומעקב במסגרת מרפאת FMF בשיבא.",
-    "shortEn": "Extensive experience in diagnosis and follow-up at the Sheba FMF clinic.",
-    "treatmentsHe": ["אבחון גנטי וקליני", "איזון טיפול ומניעת התקפים", "מעקב אחר סיבוכים"],
-    "treatmentsEn": ["Clinical and genetic diagnosis", "Treatment optimization and flare prevention", "Complication surveillance"]
+    "treatmentsHe": ["וסקוליטיס של כלי דם גדולים", "וסקוליטיס של כלי דם קטנים", "פולימיאלגיה ראומטיקה (PMR)", "בכצ'ט"],
+    "treatmentsEn": ["Large-vessel vasculitis", "Small-vessel vasculitis", "Polymyalgia rheumatica (PMR)", "Behcet disease"]
   }
 ]

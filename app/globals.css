@@ -109,7 +109,6 @@ select {
   position: absolute;
   border-radius: 9999px;
   filter: blur(2px);
-  animation: float 8s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -122,12 +121,11 @@ select {
 }
 
 .orb-b {
-  width: 190px;
-  height: 190px;
-  bottom: -40px;
-  left: -55px;
+  width: 220px;
+  height: 220px;
+  bottom: 18px;
+  left: 14px;
   background: radial-gradient(circle at 45% 45%, rgba(30, 58, 138, 0.2) 0%, rgba(106, 209, 173, 0.28) 65%, transparent 100%);
-  animation-delay: 1.4s;
 }
 
 .glass {
@@ -177,7 +175,6 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orb,
   .pulse-dot::before {
     animation: none;
   }

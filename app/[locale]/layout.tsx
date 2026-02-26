@@ -39,9 +39,6 @@ export default async function LocaleLayout({
     >
       <NextIntlClientProvider messages={messages}>
         <div className="flex min-h-screen flex-col">
-          <a href="#main-content" className="skip-link">
-            {locale === 'he' ? 'מעבר לתוכן הראשי' : 'Skip to main content'}
-          </a>
           <Header />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />

@@ -29,7 +29,7 @@ export default async function ConditionsPage({params}: {params: {locale: 'he' | 
             <h1 className="mb-3 text-3xl font-black text-slate-900">{locale === 'he' ? 'מחלות וטיפולים' : 'Conditions & Treatments'}</h1>
             <p className="max-w-3xl text-slate-700">
               {locale === 'he'
-                ? 'טיפול במחלות ראומטולוגיות דלקתיות ואוטואימוניות, כולל דלקת מפרקים שגרונית, לופוס, סקלרודרמה, וסקוליטיס, שיגדון, דלקת חוליות מקשחת ו-FMF.'
+                ? 'טיפול בכלל תחומי הראומטולוגיה - דלקת מפרקים שגרונתית (RA), דלקת חוליות מקשחת (AS), דלקת מפרקים פסוריאטית (PSA), ספונדילוארתרופתיות, זאבת (לופוס - SLE), סקלרודרמה, וסקוליטיס, פולימיאלגיה ראומטיקה (PMR), קדחת ים תיכונית (FMF), בכצ\'ט, שיגדון (גאוט GOUT).'
                 : 'Care for inflammatory and autoimmune rheumatic diseases including RA, SLE, scleroderma, vasculitis, gout, ankylosing spondylitis and FMF.'}
             </p>
           </div>
