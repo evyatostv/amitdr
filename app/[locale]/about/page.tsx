@@ -8,7 +8,7 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
 
   return buildMetadata({
     locale,
-    title: locale === 'he' ? 'אודות ד״ר עמית דרוין' : 'About Dr Amit Druvin',
+    title: locale === 'he' ? 'אודות ד״ר עמית דרוין' : 'About Dr Amit Druyan',
     description:
       locale === 'he'
         ? 'רופא בכיר ביחידה הראומטולוגית ובמרפאת FMF בשיבא תל השומר.'
@@ -58,7 +58,7 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
               ) : (
                 <div className="space-y-4 text-slate-700">
                   <p>
-                    Dr Amit Druvin is a senior physician in the Rheumatology Unit and FMF clinic at Sheba Medical
+                    Dr Amit Druyan is a senior physician in the Rheumatology Unit and FMF clinic at Sheba Medical
                     Center, Tel Hashomer. As a specialist in Internal Medicine and Rheumatology, he treats a wide range
                     of chronic inflammatory rheumatic diseases including RA, ankylosing spondylitis, FMF, gout,
                     vasculitis, scleroderma and SLE.
@@ -73,7 +73,7 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
               <div className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-soft">
                 <Image
                   src={withBasePath('/images/amit-about.jpg')}
-                  alt={locale === 'he' ? 'ד״ר עמית דרוין' : 'Dr Amit Druvin'}
+                  alt={locale === 'he' ? 'ד״ר עמית דרוין' : 'Dr Amit Druyan'}
                   width={800}
                   height={800}
                   className="h-auto w-full object-cover"

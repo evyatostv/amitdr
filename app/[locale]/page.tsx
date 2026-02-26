@@ -17,7 +17,7 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
     title:
       locale === 'he'
         ? 'ד"ר עמית דרוין | ריאומטולוג בכיר'
-        : 'Dr Amit Druvin | Senior Rheumatologist',
+        : 'Dr Amit Druyan | Senior Rheumatologist',
     description:
       locale === 'he'
         ? 'רופא בכיר ביחידה לראומטולוגיה ובמרפאת FMF בשיבא. קביעת תור מהירה.'
@@ -32,7 +32,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
   const physicianSchema = {
     '@context': 'https://schema.org',
     '@type': 'Physician',
-    name: 'Dr Amit Druvin',
+    name: 'Dr Amit Druyan',
     medicalSpecialty: 'Rheumatology',
     worksFor: 'Sheba Medical Center',
     knowsAbout: [
@@ -51,7 +51,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
   const clinicSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
-    name: 'Dr Amit Druvin Clinic',
+    name: 'Dr Amit Druyan Clinic',
     areaServed: 'Israel',
     telephone: '+972-3-9775355',
     url: baseSiteUrl,
@@ -102,7 +102,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
                 {locale === 'he' ? 'טיפול ראומטולוגי מותאם אישית' : 'Personalized Rheumatology Care'}
               </p>
               <h1 className="mb-4 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">
-                {locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druvin'}
+                {locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druyan'}
                 <span className="mt-2 block text-2xl font-bold text-brand-700 sm:text-3xl">
                   {locale === 'he' ? 'ראומטולוג מומחה' : 'Expert Rheumatologist'}
                 </span>
@@ -128,7 +128,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
               <div className="relative overflow-hidden rounded-2xl border border-brand-100 bg-white">
                 <Image
                   src={withBasePath('/images/amit-doctor-portrait.jpg')}
-                  alt={locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druvin'}
+                  alt={locale === 'he' ? 'ד"ר עמית דרוין' : 'Dr Amit Druyan'}
                   width={900}
                   height={1100}
                   className="h-auto w-full object-cover"
@@ -136,7 +136,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
                 />
               </div>
               <p className="mt-3 text-sm font-semibold text-slate-800">
-                {locale === 'he' ? 'ד"ר עמית דרוין | מומחה לראומטולוגיה ורפואה פנימית' : 'Dr Amit Druvin | Rheumatology & Internal Medicine'}
+                {locale === 'he' ? 'ד"ר עמית דרוין | מומחה לראומטולוגיה ורפואה פנימית' : 'Dr Amit Druyan | Rheumatology & Internal Medicine'}
               </p>
             </aside>
           </MotionReveal>
@@ -168,15 +168,15 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
       </section>
 
       <section className="section-space">
-        <div className="container-main grid items-center gap-6 lg:grid-cols-2">
+        <div className="container-main grid items-stretch gap-6 lg:grid-cols-2">
           <MotionReveal>
             <article className="card bg-gradient-to-br from-white to-brand-50/50 p-6">
               <h2 className="mb-3 text-3xl font-black text-slate-900">
-                {locale === 'he' ? 'אודות ד"ר עמית דרוין' : 'About Dr Amit Druvin'}
+                {locale === 'he' ? 'אודות ד"ר עמית דרוין' : 'About Dr Amit Druyan'}
               </h2>
               <p className="mb-4 text-slate-700">
                 {locale === 'he'
-                  ? 'מומחה לרפואה פנימית וראומטולוגיה. נותן מענה מקצועי למגוון מחלות ראומטולוגיות עם יחס אישי, הסבר ברור ותכנון טיפול מדורג.'
+                  ? 'מומחה לרפואה פנימית וראומטולוגיה. נותן מענה מקצועי למגוון מחלות ראומטולוגיות עם יחס אישי, הסבר ברור וקביעת תכנית טיפול מקיפה.'
                   : 'Specialist in Internal Medicine and Rheumatology, offering focused care with clear guidance and stepwise treatment planning.'}
               </p>
               <Link href="/about" className="btn-secondary">
@@ -186,10 +186,9 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
           </MotionReveal>
 
           <MotionReveal delay={0.1}>
-            <article className="card bg-gradient-to-br from-white to-brand-50 p-6">
-              <p className="text-3xl font-black text-brand-700">20+</p>
-              <p className="mt-2 text-sm text-slate-700">
-                {locale === 'he' ? 'שנות ניסיון ברפואה פנימית וריאומטולוגיה' : 'Years of internal medicine and rheumatology experience'}
+            <article className="card h-full bg-gradient-to-br from-white to-brand-50 p-6">
+              <p className="text-3xl font-black text-brand-700 sm:text-4xl">
+                20+ {locale === 'he' ? 'שנות ניסיון' : 'Years of Experience'}
               </p>
               <div className="mt-4 space-y-2 text-sm text-slate-700">
                 <p>
@@ -229,6 +228,57 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
               </MotionReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-space pt-0">
+        <div className="container-main">
+          <MotionReveal>
+            <h2 className="mb-3 text-2xl font-black text-slate-900 sm:text-3xl">
+              {locale === 'he' ? 'חוות דעת מטופלים' : 'Patient Reviews'}
+            </h2>
+          </MotionReveal>
+          <MotionReveal delay={0.08}>
+            <div className="card overflow-hidden p-2 sm:p-3">
+              <iframe
+                frameBorder="0"
+                height="270px"
+                width="100%"
+                allowFullScreen
+                src="https://www.medreviews.co.il/provider/dr-druyan-amit/reviews-widget?show-header=true&slide-switch-interval=4500&bg=ffffff&controls-color="
+                title={locale === 'he' ? 'חוות דעת מטופלים' : 'Patient Reviews'}
+              />
+            </div>
+          </MotionReveal>
+        </div>
+      </section>
+
+      <section className="section-space pt-0">
+        <div className="container-main">
+          <MotionReveal>
+            <h2 className="mb-3 text-2xl font-black text-slate-900 sm:text-3xl">
+              {locale === 'he' ? 'מיקום המרפאה' : 'Clinic Location'}
+            </h2>
+            <p className="mb-4 text-slate-700">
+              {locale === 'he'
+                ? 'דרך יצחק רבין 1, פתח תקווה, ישראל'
+                : 'Derech Yitshak Rabin 1, Petah Tikva, Israel'}
+            </p>
+          </MotionReveal>
+          <MotionReveal delay={0.08}>
+            <div className="card overflow-hidden p-2 sm:p-3">
+              <iframe
+                title={locale === 'he' ? 'מפת מיקום המרפאה' : 'Clinic location map'}
+                src="https://maps.google.com/maps?q=Derech%20Yitshak%20Rabin%201%2C%20Petah%20Tikva%2C%20Israel&z=16&output=embed"
+                width="100%"
+                height="340"
+                style={{border: 0}}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </MotionReveal>
         </div>
       </section>
 

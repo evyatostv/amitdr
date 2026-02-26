@@ -7,7 +7,7 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
     locale,
     title: locale === 'he' ? 'הצהרת נגישות' : 'Accessibility Statement',
     description:
-      locale === 'he' ? 'התאמות נגישות באתר ד"ר עמית דרוין.' : 'Accessibility adjustments on Dr Amit Druvin website.',
+      locale === 'he' ? 'התאמות נגישות באתר ד"ר עמית דרוין.' : 'Accessibility adjustments on Dr Amit Druyan website.',
     path: locale === 'he' ? '/accessibility' : '/en/accessibility'
   });
 }

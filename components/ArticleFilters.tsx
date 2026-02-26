@@ -13,6 +13,7 @@ export function ArticleFilters({
   locale: Locale;
 }) {
   const [activeTag, setActiveTag] = useState<string>('all');
+  const [showAllTags, setShowAllTags] = useState(false);
 
   const tags = useMemo(() => {
     const allTags = new Set<string>();
@@ -26,11 +27,13 @@ export function ArticleFilters({
     activeTag === 'all'
       ? articles
       : articles.filter((article) => article.tags.includes(activeTag));
+  const visibleTags = showAllTags ? tags : tags.slice(0, 12);
+  const hasMoreTags = tags.length > 12;
 
   return (
     <div>
       <div className="mb-6 flex flex-wrap gap-2">
-        {tags.map((tag) => (
+        {visibleTags.map((tag) => (
           <button
             key={tag}
             type="button"
@@ -45,6 +48,15 @@ export function ArticleFilters({
           </button>
         ))}
       </div>
+      {hasMoreTags ? (
+        <button
+          type="button"
+          className="mb-6 text-sm font-semibold text-brand-700 underline"
+          onClick={() => setShowAllTags((prev) => !prev)}
+        >
+          {showAllTags ? 'View less' : 'View more'}
+        </button>
+      ) : null}
 
       <div className="grid gap-4 sm:grid-cols-2">
         {filtered.map((article) => (

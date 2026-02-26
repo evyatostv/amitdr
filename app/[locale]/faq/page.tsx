@@ -1,4 +1,5 @@
 import {MotionReveal} from '@/components/MotionReveal';
+import {FaqAccordion} from '@/components/FaqAccordion';
 import {buildMetadata} from '@/lib/seo';
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
@@ -15,6 +16,8 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
 
 export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
+  const questionnaireUrl =
+    'https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954';
 
   const qa =
     locale === 'he'
@@ -29,7 +32,8 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
           },
           {
             q: 'מה להביא לביקור ראשון?',
-            a: 'סיכומים רפואיים, בדיקות דם עדכניות, הדמיות ורשימת תרופות. על מנת לייעל את השירות - ניתן להעלות את המסמכים לקראת הביקור בקישור הבא: https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954'
+            a: 'סיכומים רפואיים, בדיקות דם עדכניות, הדמיות ורשימת תרופות.',
+            linkText: 'להעלאת מסמכים ומילוי שאלון לפני ביקור - לחצו כאן'
           }
         ]
       : [
@@ -43,7 +47,8 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
           },
           {
             q: 'What should I bring to a first visit?',
-            a: 'Medical summaries, recent blood tests, imaging and medication list.'
+            a: 'Medical summaries, recent blood tests, imaging and medication list.',
+            linkText: 'Upload documents and complete the pre-visit questionnaire here'
           },
           {
             q: 'Is long-term follow-up available?',
@@ -57,16 +62,7 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
         <MotionReveal>
           <h1 className="mb-5 text-3xl font-black text-slate-900">{locale === 'he' ? 'שאלות נפוצות' : 'FAQ'}</h1>
         </MotionReveal>
-        <div className="space-y-3">
-          {qa.map((item, index) => (
-            <MotionReveal key={item.q} delay={0.04 * index}>
-              <details className="card group">
-                <summary className="cursor-pointer text-base font-semibold text-slate-900 marker:text-brand-600">{item.q}</summary>
-                <p className="mt-2 text-sm text-slate-700">{item.a}</p>
-              </details>
-            </MotionReveal>
-          ))}
-        </div>
+        <FaqAccordion items={qa} questionnaireUrl={questionnaireUrl} />
       </div>
     </section>
   );

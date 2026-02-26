@@ -14,7 +14,7 @@ export function ConditionCard({item, locale}: {item: ConditionItem; locale: Loca
       </div>
       <h3 className="mb-2 text-lg font-semibold text-slate-900">{name}</h3>
       <p className="mb-3 text-sm text-slate-700">{short}</p>
-      <ul className="mt-auto list-disc space-y-1 ps-5 text-sm text-slate-700">
+      <ul className="list-disc space-y-1 ps-5 text-sm text-slate-700">
         {treatments.map((line) => (
           <li key={line}>{line}</li>
         ))}

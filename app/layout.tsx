@@ -4,7 +4,7 @@ import {withBasePath} from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://amitdr.com'),
-  title: 'Dr Amit Druvin',
+  title: 'Dr Amit Druyan',
   description: 'Rheumatology care in Israel',
   icons: {
     icon: [

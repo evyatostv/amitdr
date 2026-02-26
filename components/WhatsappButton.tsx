@@ -14,7 +14,7 @@ export function WhatsappButton() {
   const message =
     locale === 'he'
       ? encodeURIComponent('שלום, אשמח לקבוע תור עם ד"ר עמית דרוין.')
-      : encodeURIComponent('Hello, I would like to book an appointment with Dr Amit Druvin.');
+      : encodeURIComponent('Hello, I would like to book an appointment with Dr Amit Druyan.');
 
   return (
     <a
