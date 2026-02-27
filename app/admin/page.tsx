@@ -12,15 +12,19 @@ type CookieLog = {
 const supabaseUrl =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
   'https://dzhrczoxkfglxdlqllkp.supabase.co';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseAnonKey =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aHJjem94a2ZnbHhkbHFsbGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTI5MTcsImV4cCI6MjA4Nzc2ODkxN30.kQF2sva0zNzmo446hQJxfPnAri5RgYu_bNcLJAXtCJs';
 
 const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
 const supabase = hasSupabaseConfig
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null;
+const ADMIN_USERNAME = 'AmitDruyan';
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || '';
 
 export default function AdmitPage() {
-  const [email, setEmail] = useState('');
+  const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -104,8 +108,25 @@ export default function AdmitPage() {
 
     setError('');
     setBusy(true);
+    const normalizedLogin =
+      loginId.includes('@')
+        ? loginId.trim()
+        : loginId.trim() === ADMIN_USERNAME && ADMIN_EMAIL
+          ? ADMIN_EMAIL
+          : '';
+
+    if (!normalizedLogin) {
+      setBusy(false);
+      setError(
+        loginId.trim() === ADMIN_USERNAME
+          ? 'Set NEXT_PUBLIC_ADMIN_EMAIL to map this username to your Supabase admin email.'
+          : 'Use your Supabase admin email to sign in.'
+      );
+      return;
+    }
+
     const {error: loginError} = await supabase.auth.signInWithPassword({
-      email,
+      email: normalizedLogin,
       password
     });
     setBusy(false);
@@ -127,7 +148,7 @@ export default function AdmitPage() {
   return (
     <section className="section-space">
       <div className="container-main max-w-5xl">
-        <h1 className="mb-4 text-3xl font-black text-slate-900">Admit Admin</h1>
+        <h1 className="mb-4 text-3xl font-black text-slate-900">Admin</h1>
         {!hasSupabaseConfig ? (
           <div className="card mb-4 border-amber-300 bg-amber-50 text-slate-800">
             <p className="font-semibold">Supabase setup required</p>
@@ -141,12 +162,12 @@ export default function AdmitPage() {
           <form onSubmit={onLogin} className="card max-w-lg space-y-3">
             <p className="text-lg font-semibold text-slate-900">Admin Login</p>
             <label className="block text-sm">
-              <span className="mb-1 block text-slate-700">Admin email</span>
+              <span className="mb-1 block text-slate-700">Admin email or username</span>
               <input
-                type="email"
+                type="text"
                 required
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                value={loginId}
+                onChange={(event) => setLoginId(event.target.value)}
                 className="w-full rounded-xl border border-slate-300 px-3 py-2"
               />
             </label>
@@ -211,16 +232,38 @@ export default function AdmitPage() {
                 <h2 className="mb-3 text-xl font-bold text-slate-900">Supabase cookie_logs</h2>
                 <p className="mb-2 text-xs text-slate-500">Shows records if table exists and RLS allows your admin user.</p>
                 {dbError ? <p className="mb-2 text-xs text-red-600">{dbError}</p> : null}
-                <div className="max-h-72 overflow-auto text-xs text-slate-700">
-                  <pre>{JSON.stringify(dbLogs, null, 2)}</pre>
+                <div className="max-h-72 space-y-2 overflow-auto">
+                  {dbLogs.length === 0 ? (
+                    <p className="text-sm text-slate-600">No Supabase cookie logs yet.</p>
+                  ) : (
+                    dbLogs.map((row, index) => (
+                      <div key={String(row.id ?? index)} className="rounded-lg border border-slate-200 p-2 text-sm text-slate-700">
+                        <p><span className="font-semibold">Choice:</span> {String(row.choice ?? '-')}</p>
+                        <p><span className="font-semibold">Path:</span> {String(row.path ?? '-')}</p>
+                        <p><span className="font-semibold">Source:</span> {String(row.source ?? '-')}</p>
+                        <p><span className="font-semibold">Created:</span> {String(row.created_at ?? '-')}</p>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
 
               <div className="card">
                 <h2 className="mb-3 text-xl font-bold text-slate-900">Supabase site_stats</h2>
                 <p className="mb-2 text-xs text-slate-500">Optional table for extra website analytics.</p>
-                <div className="max-h-72 overflow-auto text-xs text-slate-700">
-                  <pre>{JSON.stringify(dbStats, null, 2)}</pre>
+                <div className="max-h-72 space-y-2 overflow-auto">
+                  {dbStats.length === 0 ? (
+                    <p className="text-sm text-slate-600">No Supabase site stats yet.</p>
+                  ) : (
+                    dbStats.map((row, index) => (
+                      <div key={String(row.id ?? index)} className="rounded-lg border border-slate-200 p-2 text-sm text-slate-700">
+                        <p><span className="font-semibold">Path:</span> {String(row.path ?? '-')}</p>
+                        <p><span className="font-semibold">Language:</span> {String(row.language ?? '-')}</p>
+                        <p><span className="font-semibold">Referrer:</span> {String(row.referrer ?? '-')}</p>
+                        <p><span className="font-semibold">Created:</span> {String(row.created_at ?? '-')}</p>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>
