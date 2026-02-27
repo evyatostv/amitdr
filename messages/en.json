@@ -10,7 +10,9 @@
     "book": "Book Appointment",
     "contact": "Contact",
     "privacy": "Privacy Policy",
-    "accessibility": "Accessibility"
+    "accessibility": "Accessibility",
+    "terms": "Terms of Use",
+    "medicalDisclaimer": "Medical Disclaimer"
   },
   "common": {
     "bookNow": "Book Appointment",
@@ -21,5 +23,12 @@
   "footer": {
     "rights": "All rights reserved",
     "address": "Sheba Medical Center, Tel Hashomer"
+  },
+  "cookies": {
+    "title": "Cookie Settings",
+    "description": "We use cookies to improve your browsing experience.",
+    "policyLink": "Privacy Policy",
+    "acceptAll": "Accept all",
+    "essentialOnly": "Essential only"
   }
 }

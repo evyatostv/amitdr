@@ -36,7 +36,7 @@ export default async function AccessibilityPage({params}: {params: {locale: 'he'
         <h1 className="mb-4 text-3xl font-bold text-slate-900">
           {locale === 'he' ? 'הצהרת נגישות' : 'Accessibility Statement'}
         </h1>
-        <ul className="card list-disc space-y-2 ps-6 text-slate-800">
+        <ul className="card list-disc space-y-3 p-6 ps-7 text-slate-800 sm:p-8 sm:ps-8">
           {points.map((point) => (
             <li key={point}>{point}</li>
           ))}

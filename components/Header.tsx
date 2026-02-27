@@ -20,7 +20,9 @@ const moreNavItems = [
   {href: '/contact', key: 'contact'},
   {href: '/book', key: 'book'},
   {href: '/privacy', key: 'privacy'},
-  {href: '/accessibility', key: 'accessibility'}
+  {href: '/accessibility', key: 'accessibility'},
+  {href: '/terms', key: 'terms'},
+  {href: '/medical-disclaimer', key: 'medicalDisclaimer'}
 ] as const;
 
 export function Header() {

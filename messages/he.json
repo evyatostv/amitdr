@@ -10,7 +10,9 @@
     "book": "קביעת תור",
     "contact": "יצירת קשר",
     "privacy": "מדיניות פרטיות",
-    "accessibility": "הצהרת נגישות"
+    "accessibility": "הצהרת נגישות",
+    "terms": "תנאי שימוש",
+    "medicalDisclaimer": "הצהרה רפואית"
   },
   "common": {
     "bookNow": "קבעו תור",
@@ -21,5 +23,12 @@
   "footer": {
     "rights": "כל הזכויות שמורות",
     "address": "מרפאת ג'יי מדיקל, דרך יצחק רבין 1, מגדלי Global Towers, בניין A קומה 12"
+  },
+  "cookies": {
+    "title": "הגדרות עוגיות",
+    "description": "אנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה באתר.",
+    "policyLink": "מדיניות פרטיות",
+    "acceptAll": "אשר הכל",
+    "essentialOnly": "חיוני בלבד"
   }
 }

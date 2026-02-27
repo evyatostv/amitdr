@@ -19,6 +19,12 @@ export function Footer() {
           <Link href="/accessibility" locale={locale} className="hover:text-slate-900">
             {t('nav.accessibility')}
           </Link>
+          <Link href="/terms" locale={locale} className="hover:text-slate-900">
+            {t('nav.terms')}
+          </Link>
+          <Link href="/medical-disclaimer" locale={locale} className="hover:text-slate-900">
+            {t('nav.medicalDisclaimer')}
+          </Link>
         </div>
         <p>{t('footer.address')}</p>
         <div className="mt-2 flex items-center gap-2">

@@ -13,7 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/book',
     '/contact',
     '/privacy',
-    '/accessibility'
+    '/accessibility',
+    '/terms',
+    '/medical-disclaimer'
   ];
 
   const localizedRoutes = routes.flatMap((route) => [

@@ -2,6 +2,7 @@ import {notFound} from 'next/navigation';
 import {articleItems, getArticleBySlug} from '@/lib/content';
 import {CheckInsightLink} from '@/components/CheckInsightLink';
 import {buildMetadata} from '@/lib/seo';
+import {Link} from '@/lib/i18n/navigation';
 
 export function generateStaticParams() {
   return articleItems.map((article) => ({slug: article.slug}));
@@ -34,6 +35,13 @@ export default async function ArticleDetailPage({params}: {params: {locale: 'he'
   return (
     <section className="section-space">
       <div className="container-main max-w-3xl">
+        <Link
+          href="/articles"
+          locale={locale}
+          className="mb-4 inline-flex items-center text-sm font-semibold text-brand-700 underline"
+        >
+          {locale === 'he' ? 'חזרה למאמרים <-' : '<- Back to articles'}
+        </Link>
         <p className="mb-2 text-xs text-slate-500">{article.date}</p>
         <h1 className="mb-3 text-3xl font-bold text-slate-900">
           {locale === 'he' ? article.titleHe : article.titleEn}

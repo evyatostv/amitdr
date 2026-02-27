@@ -4,6 +4,8 @@ import {Heebo} from 'next/font/google';
 import {Header} from '@/components/Header';
 import {Footer} from '@/components/Footer';
 import {WhatsappButton} from '@/components/WhatsappButton';
+import {CookieBanner} from '@/components/CookieBanner';
+import {SiteStatsTracker} from '@/components/SiteStatsTracker';
 import {routing, type Locale} from '@/lib/i18n/routing';
 
 const heebo = Heebo({
@@ -40,9 +42,11 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
         <div className="flex min-h-screen flex-col">
           <Header />
+          <SiteStatsTracker />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <WhatsappButton />
+          <CookieBanner locale={locale} />
         </div>
       </NextIntlClientProvider>
     </div>
