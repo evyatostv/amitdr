@@ -188,7 +188,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
           <MotionReveal delay={0.1}>
             <article className="card h-full bg-gradient-to-br from-white to-brand-50 p-6">
               <p className="text-3xl font-black text-brand-700 sm:text-4xl">
-                20+ {locale === 'he' ? 'שנות ניסיון' : 'Years of Experience'}
+                20+ {locale === 'he' ? 'שנות נסיון קליני' : 'Years of Experience'}
               </p>
               <div className="mt-4 space-y-2 text-sm text-slate-700">
                 <p>
