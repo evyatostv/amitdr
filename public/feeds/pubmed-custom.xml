@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Custom: PubMed Feed (Local Fallback)</title>
+    <link>https://drd.co.il/feeds/pubmed-custom.xml</link>
+    <description>Fallback feed generated from local PubMed-linked articles.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Feb 2026 13:46:03 GMT</lastBuildDate>
+    <item>
+      <title>Acute Attack Treatment: Fast Anakinra Injection</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/41133353/</link>
+      <guid isPermaLink="false">fmf-ankinra-acute-attack</guid>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <description>Can an FMF attack be stopped with a single Kineret injection?</description>
+    </item>
+    <item>
+      <title>Characteristics of Patients With Double V694M Mutations</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/40902213/</link>
+      <guid isPermaLink="false">fmf-v694m-double-mutation</guid>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <description>Health impact of double carriage of the V694M mutation.</description>
+    </item>
+    <item>
+      <title>Response to Ilaris After Kineret Failure</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/34369359/</link>
+      <guid isPermaLink="false">fmf-ilaris-after-kineret</guid>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate>
+      <description>Whether patients who failed Kineret respond to Ilaris.</description>
+    </item>
+    <item>
+      <title>Follow-up of FMF Patients With Amyloidosis</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/39908750/</link>
+      <guid isPermaLink="false">fmf-amyloidosis-followup</guid>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 GMT</pubDate>
+      <description>Whether low renal function at diagnosis predicts kidney failure.</description>
+    </item>
+    <item>
+      <title>COVID Vaccine in FMF Patients</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/35238382/</link>
+      <guid isPermaLink="false">fmf-covid-vaccine-safety</guid>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 GMT</pubDate>
+      <description>Whether the COVID vaccine is safe for FMF patients.</description>
+    </item>
+    <item>
+      <title>Risk of Severe COVID in Autoimmune Disease</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/33277764/</link>
+      <guid isPermaLink="false">autoimmune-severe-covid-risk</guid>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate>
+      <description>Whether autoimmune disease increases risk of severe COVID.</description>
+    </item>
+    <item>
+      <title>Plaquenil in Cutaneous Lupus</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/40015570/</link>
+      <guid isPermaLink="false">cutaneous-lupus-plaquenil</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description>Whether early treatment prevents progression to systemic lupus.</description>
+    </item>
+    <item>
+      <title>Methotrexate in Psoriasis for PsA Prevention</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/39716640/</link>
+      <guid isPermaLink="false">psoriasis-methotrexate-psa-prevention</guid>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Whether early treatment helps.</description>
+    </item>
+    <item>
+      <title>ACE Testing in Sarcoidosis</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/39716640/</link>
+      <guid isPermaLink="false">sarcoidosis-ace-test</guid>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Whether early treatment helps.</description>
+    </item>
+    <item>
+      <title>Sacroiliac MRI Above Age 55</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/39716640/</link>
+      <guid isPermaLink="false">sacroiliac-mri-over-55</guid>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Whether early treatment helps.</description>
+    </item>
+    <item>
+      <title>JAK Inhibitors and Cardiovascular Risk in RA</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/38772185/</link>
+      <guid isPermaLink="false">jak-inhibitors-cv-risk-ra</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+      <description>Whether cardiovascular morbidity is increased.</description>
+    </item>
+    <item>
+      <title>JAK Inhibitors and Risk of Intestinal Perforation</title>
+      <link>https://pubmed.ncbi.nlm.nih.gov/39736095/</link>
+      <guid isPermaLink="false">jak-inhibitors-gi-perforation-risk</guid>
+      <pubDate>Thu, 01 May 2025 00:00:00 GMT</pubDate>
+      <description>Whether there is risk for intestinal perforation.</description>
+    </item>
+  </channel>
+</rss>

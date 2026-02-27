@@ -1,9 +1,27 @@
 'use client';
 
-import {useMemo, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import type {ArticleItem} from '@/lib/types';
 import type {Locale} from '@/lib/i18n/routing';
 import {Link} from '@/lib/i18n/navigation';
+
+const tagLabelMapEn: Record<string, string> = {
+  אנקינרה: 'Anakinra',
+  קינרת: 'Kineret',
+  גנטיקה: 'Genetics',
+  עמילואידוזיס: 'Amyloidosis',
+  כליות: 'Kidneys',
+  חיסון: 'Vaccine',
+  אוטואימוני: 'Autoimmune',
+  לופוס: 'Lupus',
+  זאבת: 'Lupus',
+  פסוריאזיס: 'Psoriasis',
+  מתוטרקסט: 'Methotrexate',
+  סרקואידוזיס: 'Sarcoidosis',
+  סקרואיליאקלי: 'Sacroiliac',
+  קרדיווסקולרי: 'Cardiovascular',
+  מעי: 'Intestinal'
+};
 
 export function ArticleFilters({
   articles,
@@ -12,21 +30,28 @@ export function ArticleFilters({
   articles: ArticleItem[];
   locale: Locale;
 }) {
+  const toDisplayTag = useCallback(
+    (tag: string) => (locale === 'he' ? tag : (tagLabelMapEn[tag] ?? tag)),
+    [locale]
+  );
+
   const [activeTag, setActiveTag] = useState<string>('all');
   const [showAllTags, setShowAllTags] = useState(false);
 
   const tags = useMemo(() => {
     const allTags = new Set<string>();
     for (const article of articles) {
-      article.tags.forEach((tag) => allTags.add(tag));
+      article.tags.forEach((tag) => allTags.add(toDisplayTag(tag)));
     }
     return ['all', ...Array.from(allTags)];
-  }, [articles]);
+  }, [articles, toDisplayTag]);
 
   const filtered =
     activeTag === 'all'
       ? articles
-      : articles.filter((article) => article.tags.includes(activeTag));
+      : articles.filter((article) =>
+          article.tags.some((tag) => toDisplayTag(tag) === activeTag)
+        );
   const visibleTags = showAllTags ? tags : tags.slice(0, 12);
   const hasMoreTags = tags.length > 12;
 
@@ -47,16 +72,22 @@ export function ArticleFilters({
             {tag === 'all' ? (locale === 'he' ? 'הכל' : 'All') : tag}
           </button>
         ))}
+        {hasMoreTags ? (
+          <button
+            type="button"
+            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-brand-700 ring-1 ring-slate-200 hover:bg-slate-100"
+            onClick={() => setShowAllTags((prev) => !prev)}
+          >
+            {showAllTags
+              ? locale === 'he'
+                ? 'הצג פחות'
+                : 'View less'
+              : locale === 'he'
+                ? 'הצג עוד'
+                : 'View more'}
+          </button>
+        ) : null}
       </div>
-      {hasMoreTags ? (
-        <button
-          type="button"
-          className="mb-6 text-sm font-semibold text-brand-700 underline"
-          onClick={() => setShowAllTags((prev) => !prev)}
-        >
-          {showAllTags ? 'View less' : 'View more'}
-        </button>
-      ) : null}
 
       <div className="grid gap-4 sm:grid-cols-2">
         {filtered.map((article) => (
@@ -68,7 +99,11 @@ export function ArticleFilters({
             <p className="mb-3 text-sm text-slate-700">
               {locale === 'he' ? article.summaryHe : article.summaryEn}
             </p>
-            <Link href={`/articles/${article.slug}`} className="text-sm font-semibold text-brand-700 underline">
+            <Link
+              href={`/articles/${article.slug}`}
+              locale={locale}
+              className="text-sm font-semibold text-brand-700 underline"
+            >
               {locale === 'he' ? 'לפרטים' : 'Read more'}
             </Link>
           </article>

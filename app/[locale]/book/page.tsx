@@ -44,7 +44,7 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
               {locale === 'he' ? 'קביעת תור באופן עצמאי בזמן שנוח לכם.' : 'Book directly online at your preferred time.'}
             </p>
             <div className="rounded-xl border border-brand-100 bg-white p-3">
-              <OdoroBookingWidget clinicId="539955994" appdrn="druyana" divId="odoro" />
+              <OdoroBookingWidget clinicId="539955994" appdrn="druyana" divId="odoro" lang={locale} />
             </div>
           </article>
         </MotionReveal>
@@ -60,7 +60,7 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
                 : 'Appointment flow through Maccabi channels.'}
             </p>
             <a
-              href="https://www.maccabi4u.co.il/"
+              href="https://serguide.maccabi4u.co.il/heb/doctors/doctorssearchresults/doctorsinfopage/?ItemKeyIndex=591791029E0DAEF80B7904B3F3143DBC5FEC270D3DC1D628A665A204A62A6F20&RequestId=00000000-0000-0000-0001-000000000216"
               target="_blank"
               rel="noreferrer"
               className="btn-secondary w-full text-center"
@@ -92,9 +92,15 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
                 <li>{locale === 'he' ? 'הדמיות' : 'Imaging studies'}</li>
                 <li>{locale === 'he' ? 'רשימת תרופות' : 'Medication list'}</li>
                 <li>
-                  {locale === 'he'
-                    ? 'מומלץ לקראת הביקור למלא את השאלון בקישור הבא: https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954'
-                    : 'Recommended before the visit: complete the questionnaire here: https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954'}
+                  {locale === 'he' ? 'מומלץ לקראת הביקור למלא את השאלון ' : 'Recommended before the visit, complete the questionnaire '}
+                  <a
+                    href="https://smartclinic.belong.life/signup?community=ae5f69b1bae74aab8ea664addd114954"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-brand-700 underline"
+                  >
+                    {locale === 'he' ? 'לחצו כאן' : 'click here'}
+                  </a>
                 </li>
               </ul>
             </article>
@@ -104,9 +110,16 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
             <article className="card">
               <h2 className="mb-2 text-lg font-semibold text-slate-900">{locale === 'he' ? 'מיקום מרפאה' : 'Clinic Location'}</h2>
               <p className="text-sm text-slate-700">
-                {locale === 'he'
-                  ? 'מרפאת ג\'יי מדיקל, דרך יצחק רבין 1, מגדלי Global Towers, בניין A קומה 12.'
-                  : 'J Medical Clinic, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12.'}
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Derech+Yitzhak+Rabin+1,+Petah+Tikva,+Israel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-brand-700 underline"
+                >
+                  {locale === 'he'
+                    ? 'מרפאת ג\'יי מדיקל, דרך יצחק רבין 1, מגדלי Global Towers, בניין A קומה 12.'
+                    : 'J Medical Clinic, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12.'}
+                </a>
               </p>
             </article>
           </MotionReveal>

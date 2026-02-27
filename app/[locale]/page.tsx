@@ -113,7 +113,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
                   : 'Senior physician in the Rheumatology Unit and FMF clinic. Professional diagnosis, clear plans and close follow-up.'}
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link href="/book" className="btn-primary">
+                <Link href="/book" locale={locale} className="btn-primary">
                   {locale === 'he' ? 'קביעת תור מהירה' : 'Book Fast'}
                 </Link>
                 <a href="tel:039775355" className="btn-secondary">
@@ -179,7 +179,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
                   ? 'מומחה לרפואה פנימית וראומטולוגיה. נותן מענה מקצועי למגוון מחלות ראומטולוגיות עם יחס אישי, הסבר ברור וקביעת תכנית טיפול מקיפה.'
                   : 'Specialist in Internal Medicine and Rheumatology, offering focused care with clear guidance and stepwise treatment planning.'}
               </p>
-              <Link href="/about" className="btn-secondary">
+              <Link href="/about" locale={locale} className="btn-secondary">
                 {locale === 'he' ? 'למידע נוסף' : 'Read More'}
               </Link>
             </article>
@@ -193,8 +193,8 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
               <div className="mt-4 space-y-2 text-sm text-slate-700">
                 <p>
                   {locale === 'he'
-                    ? 'רופא מומחה בכיר ביחידה הראומטולוגית ומחלקה פנימית ו\' בתל השומר. מרכז תחום מחלות מפרקים חריפות במאושפזים.'
-                    : "Senior specialist physician in the rheumatology unit and Internal Medicine Department V at Tel Hashomer. Leads acute inpatient arthritis care."}
+                    ? 'רופא מומחה בכיר ביחידה הראומטולוגית ובמחלקה פנימית ו׳ בתל השומר. מרכז תחום מחלות מפרקים חריפות במאושפזים.'
+                    : "Senior specialist physician in the rheumatology unit and Internal Medicine Department F (6) at Tel Hashomer. Leads acute inpatient arthritis care."}
                 </p>
                 <p>
                   {locale === 'he'

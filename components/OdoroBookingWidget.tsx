@@ -8,6 +8,7 @@ declare global {
       params?: {
         clinicId: string;
         mode: string;
+        lang?: 'he' | 'en';
         options: {appdrn: string};
         divId: string;
       };
@@ -18,17 +19,20 @@ declare global {
 export function OdoroBookingWidget({
   clinicId,
   appdrn,
-  divId
+  divId,
+  lang
 }: {
   clinicId: string;
   appdrn: string;
   divId: string;
+  lang: 'he' | 'en';
 }) {
   useEffect(() => {
     window.odoro = window.odoro || {};
     window.odoro.params = {
       clinicId,
       mode: 'public',
+      lang,
       options: {appdrn},
       divId
     };
@@ -50,8 +54,7 @@ export function OdoroBookingWidget({
     return () => {
       script.remove();
     };
-  }, [clinicId, appdrn, divId]);
+  }, [clinicId, appdrn, divId, lang]);
 
   return <div id={divId} className="w-full" aria-label="Odoro booking widget" />;
 }
-

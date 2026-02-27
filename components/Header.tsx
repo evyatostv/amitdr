@@ -2,8 +2,9 @@
 
 import {useEffect, useRef, useState} from 'react';
 import Image from 'next/image';
+import {usePathname as useNextPathname} from 'next/navigation';
 import {useLocale, useTranslations} from 'next-intl';
-import {Link, usePathname} from '@/lib/i18n/navigation';
+import {Link} from '@/lib/i18n/navigation';
 import {withBasePath} from '@/lib/asset-path';
 
 const primaryNavItems = [
@@ -25,9 +26,21 @@ const moreNavItems = [
 export function Header() {
   const t = useTranslations();
   const locale = useLocale();
-  const pathname = usePathname();
-  const nextLocale = locale === 'he' ? 'en' : 'he';
-  const languageFlag = locale === 'he' ? '🇺🇸' : '🇮🇱';
+  const pathname = useNextPathname() || '/';
+  const localeFromPath = pathname.startsWith('/en')
+    ? 'en'
+    : pathname.startsWith('/he')
+      ? 'he'
+      : locale;
+  const currentLocale = localeFromPath === 'en' ? 'en' : 'he';
+  const isHebrew = localeFromPath === 'he';
+  const nextLocale = localeFromPath === 'he' ? 'en' : 'he';
+  const switchPathname = pathname.replace(/^\/(he|en)(?=\/|$)/, '') || '/';
+  const languageFlag = nextLocale === 'he' ? '🇮🇱' : '🇺🇸';
+  const cleanPath = switchPathname;
+  const isActivePath = (href: string) =>
+    href === '/' ? cleanPath === '/' : cleanPath === href || cleanPath.startsWith(`${href}/`);
+  const isMoreActive = moreNavItems.some((item) => isActivePath(item.href));
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
@@ -54,11 +67,24 @@ export function Header() {
     return () => document.removeEventListener('mousedown', onClickOutside);
   }, []);
 
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setMoreOpen(false);
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 border-b border-brand-100 bg-white/85 backdrop-blur-xl">
       <div className="container-main flex items-center justify-between gap-3 py-3">
         <Link
           href="/"
+          locale={currentLocale}
           className="inline-flex items-center p-0"
           aria-label={t('siteName')}
         >
@@ -78,7 +104,7 @@ export function Header() {
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label={
-            locale === 'he'
+            isHebrew
               ? open
                 ? 'סגירת תפריט'
                 : 'פתיחת תפריט'
@@ -87,7 +113,7 @@ export function Header() {
                 : 'Open menu'
           }
         >
-          <span className="sr-only">{locale === 'he' ? 'תפריט' : 'Menu'}</span>
+          <span className="sr-only">{isHebrew ? 'תפריט' : 'Menu'}</span>
           <span className="relative h-5 w-6" aria-hidden>
             <span
               className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
@@ -112,7 +138,12 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-xl px-3 py-2.5 text-base font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+              locale={currentLocale}
+              className={`rounded-xl px-3 py-2.5 text-base font-medium transition ${
+                isActivePath(item.href)
+                  ? 'bg-brand-100 text-brand-800'
+                  : 'text-slate-700 hover:bg-brand-50 hover:text-brand-700'
+              }`}
             >
               {t(`nav.${item.key}`)}
             </Link>
@@ -120,12 +151,16 @@ export function Header() {
           <div className="relative" ref={moreRef}>
             <button
               type="button"
-              className="rounded-xl px-3 py-2.5 text-base font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+              className={`rounded-xl px-3 py-2.5 text-base font-medium transition ${
+                moreOpen || isMoreActive
+                  ? 'bg-brand-100 text-brand-800'
+                  : 'text-slate-700 hover:bg-brand-50 hover:text-brand-700'
+              }`}
               onClick={() => setMoreOpen((prev) => !prev)}
               aria-expanded={moreOpen}
               aria-haspopup="menu"
             >
-              {locale === 'he' ? 'עוד' : 'More'}
+              {isHebrew ? 'עוד' : 'More'}
             </button>
             <div
               className={`absolute end-0 top-full mt-2 w-[min(560px,80vw)] rounded-2xl border border-brand-100 bg-white p-3 shadow-soft transition-all duration-200 ${
@@ -137,7 +172,12 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+                    locale={currentLocale}
+                    className={`rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                      isActivePath(item.href)
+                        ? 'bg-brand-100 text-brand-800'
+                        : 'text-slate-700 hover:bg-brand-50 hover:text-brand-700'
+                    }`}
                     onClick={() => setMoreOpen(false)}
                   >
                     {t(`nav.${item.key}`)}
@@ -150,7 +190,7 @@ export function Header() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Link
-            href={pathname}
+            href={switchPathname}
             locale={nextLocale}
             className="inline-flex h-12 w-12 items-center justify-center rounded-full text-2xl transition-transform hover:scale-110"
             aria-label={t('common.languageSwitch')}
@@ -160,7 +200,7 @@ export function Header() {
           <a href="tel:039775355" className="btn-secondary" aria-label={t('common.callNow')}>
             {t('common.callNow')}
           </a>
-          <Link href="/book" className="btn-primary" aria-label={t('common.bookNow')}>
+          <Link href="/book" locale={currentLocale} className="btn-primary" aria-label={t('common.bookNow')}>
             {t('common.bookNow')}
           </Link>
         </div>
@@ -174,7 +214,12 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-slate-700 hover:bg-brand-50"
+                  locale={currentLocale}
+                  className={`rounded-lg px-3 py-3 text-base font-medium ${
+                    isActivePath(item.href)
+                      ? 'bg-brand-100 text-brand-800'
+                      : 'text-slate-700 hover:bg-brand-50'
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {t(`nav.${item.key}`)}
@@ -186,7 +231,7 @@ export function Header() {
                 onClick={() => setMobileMoreOpen((prev) => !prev)}
                 aria-expanded={mobileMoreOpen}
               >
-                <span>{locale === 'he' ? 'עוד' : 'More'}</span>
+                <span>{isHebrew ? 'עוד' : 'More'}</span>
                 <span
                   className={`transition-transform duration-200 ${
                     mobileMoreOpen ? 'rotate-180' : ''
@@ -202,7 +247,12 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-white"
+                      locale={currentLocale}
+                      className={`rounded-lg px-3 py-2.5 text-sm font-medium ${
+                        isActivePath(item.href)
+                          ? 'bg-white text-brand-800'
+                          : 'text-slate-700 hover:bg-white'
+                      }`}
                       onClick={() => setOpen(false)}
                     >
                       {t(`nav.${item.key}`)}
@@ -213,7 +263,7 @@ export function Header() {
             </nav>
             <div className="flex flex-col gap-2">
               <Link
-                href={pathname}
+                href={switchPathname}
                 locale={nextLocale}
                 className="inline-flex h-12 w-12 items-center justify-center self-center rounded-full text-2xl transition-transform hover:scale-110"
                 aria-label={t('common.languageSwitch')}
@@ -224,7 +274,13 @@ export function Header() {
               <a href="tel:039775355" className="btn-secondary w-full text-center" aria-label={t('common.callNow')}>
                 {t('common.callNow')}
               </a>
-              <Link href="/book" className="btn-primary w-full" aria-label={t('common.bookNow')} onClick={() => setOpen(false)}>
+              <Link
+                href="/book"
+                locale={currentLocale}
+                className="btn-primary w-full"
+                aria-label={t('common.bookNow')}
+                onClick={() => setOpen(false)}
+              >
                 {t('common.bookNow')}
               </Link>
             </div>

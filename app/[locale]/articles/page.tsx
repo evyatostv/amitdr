@@ -3,6 +3,39 @@ import {ArticleFilters} from '@/components/ArticleFilters';
 import {MotionReveal} from '@/components/MotionReveal';
 import {buildMetadata} from '@/lib/seo';
 import Script from 'next/script';
+import {readFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+
+type PubMedFeedItem = {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+};
+
+function decodeXml(text: string) {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'");
+}
+
+function extractTag(block: string, tag: string) {
+  const match = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
+  return decodeXml((match?.[1] || '').replace(/<!\[CDATA\[|\]\]>/g, '').trim());
+}
+
+function parsePubMedFeed(xml: string): PubMedFeedItem[] {
+  const items = xml.match(/<item>[\s\S]*?<\/item>/gi) || [];
+  return items.map((item) => ({
+    title: extractTag(item, 'title'),
+    link: extractTag(item, 'link'),
+    pubDate: extractTag(item, 'pubDate'),
+    description: extractTag(item, 'description')
+  }));
+}
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
@@ -20,6 +53,25 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
 
 export default async function ArticlesPage({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
+  let pubmedFeedItems: PubMedFeedItem[] = [];
+
+  try {
+    const feedXml = await readFile(
+      resolve(process.cwd(), 'public/feeds/pubmed-custom.xml'),
+      'utf8'
+    );
+    pubmedFeedItems = parsePubMedFeed(feedXml);
+  } catch {
+    pubmedFeedItems = [];
+  }
+
+  const localPubMedLinks = new Set(
+    articleItems.map((item) => item.externalLink).filter(Boolean)
+  );
+  const mergedFeedItems = pubmedFeedItems
+    .filter((item) => item.link && !localPubMedLinks.has(item.link))
+    .slice(0, 9);
+
   const researchItems = [
     {
       titleHe: 'טיפול בהתקף חריף: הזרקה מהירה של אנקינרה',
@@ -67,7 +119,11 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
                   src="https://player.vimeo.com/video/1010353933?h=f5ca7c3ece&badge=0&autopause=0&player_id=0&app_id=58479"
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                   className="absolute left-0 top-0 h-full w-full border-0"
-                  title='4 עיניים 11.9.24 - ד"ר עמית דרוין'
+                  title={
+                    locale === 'he'
+                      ? '4 עיניים 11.9.24 - ד"ר עמית דרוין'
+                      : '4 Eyes 11.9.24 - Dr Amit Druyan'
+                  }
                 />
               </div>
             </div>
@@ -136,12 +192,44 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
 
         <ArticleFilters articles={articleItems} locale={locale} />
 
-        <div className="mt-8 overflow-hidden">
-          <div className="elfsight-app-67ca7e7f-b560-4665-90df-e88e0fcf7487" data-elfsight-app-lazy />
-        </div>
+        {mergedFeedItems.length > 0 ? (
+          <MotionReveal>
+            <div className="mt-8">
+              <h2 className="mb-4 text-2xl font-black text-slate-900">
+                {locale === 'he' ? 'עדכונים נוספים מ-PubMed' : 'More from PubMed'}
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {mergedFeedItems.map((item) => (
+                  <article className="card flex h-full flex-col" key={item.link}>
+                    <p className="mb-2 text-xs text-slate-500">
+                      {item.pubDate
+                        ? new Date(item.pubDate).toLocaleDateString(
+                            locale === 'he' ? 'he-IL' : 'en-US'
+                          )
+                        : ''}
+                    </p>
+                    <h3 className="mb-2 text-lg font-semibold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="mb-3 line-clamp-5 text-sm text-slate-700">
+                      {item.description}
+                    </p>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto pt-2 text-sm font-semibold text-brand-700 underline"
+                    >
+                      {locale === 'he' ? 'לפרטים ב-PubMed' : 'Read more on PubMed'}
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </MotionReveal>
+        ) : null}
       </div>
       <Script src="https://player.vimeo.com/api/player.js" />
-      <Script src="https://static.elfsight.com/platform/platform.js" async />
     </section>
   );
 }
