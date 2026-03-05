@@ -26,7 +26,14 @@ export function Footer() {
             {t('nav.medicalDisclaimer')}
           </Link>
         </div>
-        <p>{t('footer.address')}</p>
+        <a
+          href="https://maps.google.com/?q=Derech%20Yitshak%20Rabin%201%2C%20Petah%20Tikva%2C%20Israel"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-slate-900"
+        >
+          {t('footer.address')}
+        </a>
         <div className="mt-2 flex items-center gap-2">
           <Image src={withBasePath('/images/logo-icon.png')} alt={t('siteName')} width={24} height={24} className="rounded-full object-contain" />
           <p>

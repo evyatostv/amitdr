@@ -27,6 +27,10 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
             a: 'ניתן לקבוע תור דרך עמוד קביעת התורים או בטלפון 03-9775355.'
           },
           {
+            q: 'מה משך הביקור הראשון?',
+            a: 'משך הביקור משתנה לפי המקרה, וברוב המקרים נמשך כ-20-40 דקות כולל מעבר על מסמכים ובניית תכנית טיפול.'
+          },
+          {
             q: 'האם ניתן להגיע עם הפניה ממכבי?',
             a: 'מטופלי מכבי יתקבלו דרך הקופה. בעמוד קביעת תור יש לבחור - קביעת תור למטופלי מכבי.'
           },
@@ -34,12 +38,28 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
             q: 'מה להביא לביקור ראשון?',
             a: 'סיכומים רפואיים, בדיקות דם עדכניות, הדמיות ורשימת תרופות.',
             linkText: 'להעלאת מסמכים ומילוי שאלון לפני ביקור - לחצו כאן'
+          },
+          {
+            q: 'האם יש מעקב ארוך טווח?',
+            a: 'כן. מעקב נקבע לפי האבחנה, פעילות המחלה והתגובה לטיפול.'
+          },
+          {
+            q: 'האם אפשר לקבל חוות דעת שנייה?',
+            a: 'כן. ניתן להגיע לחוות דעת שנייה עם כל החומר הרפואי הקיים.'
+          },
+          {
+            q: 'איך אפשר ליצור קשר מהיר?',
+            a: 'ניתן ליצור קשר בטלפון 03-9775355 או דרך עמוד יצירת קשר באתר.'
           }
         ]
       : [
           {
             q: 'How do I book?',
             a: 'Use the Book page or call 03-9775355.'
+          },
+          {
+            q: 'How long is a first visit?',
+            a: 'Visit length depends on complexity, and in most cases takes about 20-40 minutes including review and planning.'
           },
           {
             q: 'Is there a Maccabi flow?',
@@ -53,6 +73,14 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
           {
             q: 'Is long-term follow-up available?',
             a: 'Yes. Follow-up plans are based on diagnosis and treatment response.'
+          },
+          {
+            q: 'Can I get a second opinion?',
+            a: 'Yes. You can come for a second opinion with your full medical records.'
+          },
+          {
+            q: 'What is the fastest way to contact the clinic?',
+            a: 'Call 03-9775355 or use the Contact page on the website.'
           }
         ];
 

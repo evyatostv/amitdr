@@ -3,8 +3,11 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true';
 const repoBasePath = '/amitdr';
+const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
+  // Isolate dev artifacts from build artifacts to prevent cross-corruption.
+  distDir: isDev ? '.next-dev' : '.next',
   output: 'export',
   images: {
     unoptimized: true
@@ -54,7 +57,13 @@ const nextConfig = {
             destination: '/:locale/book',
             permanent: true
           }
-        ]
+        ],
+  webpack: (config, {dev}) => {
+    if (dev) {
+      config.cache = false;
+    }
+    return config;
+  }
 };
 
 export default withNextIntl(nextConfig);

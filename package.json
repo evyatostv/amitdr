@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "check:no-dev": "node scripts/check-no-dev-running.mjs",
     "feed:pubmed": "node scripts/generate-pubmed-feed.mjs",
     "supabase:setup": "node scripts/apply-supabase-schema.mjs",
-    "prebuild": "npm run feed:pubmed",
+    "prebuild": "npm run check:no-dev && npm run feed:pubmed",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

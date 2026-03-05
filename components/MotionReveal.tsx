@@ -5,9 +5,8 @@ import {PropsWithChildren} from 'react';
 
 export function MotionReveal({
   children,
-  delay = 0,
-  y = 12
-}: PropsWithChildren<{delay?: number; y?: number}>) {
+  delay = 0
+}: PropsWithChildren<{delay?: number}>) {
   const reduceMotion = useReducedMotion();
 
   if (reduceMotion) {
@@ -16,7 +15,7 @@ export function MotionReveal({
 
   return (
     <motion.div
-      initial={{opacity: 0, y}}
+      initial={false}
       whileInView={{opacity: 1, y: 0}}
       viewport={{once: true, amount: 0.15}}
       transition={{duration: 0.42, ease: 'easeOut', delay}}

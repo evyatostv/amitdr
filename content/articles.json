@@ -120,36 +120,6 @@
     "sourceName": "PubMed"
   },
   {
-    "slug": "sarcoidosis-ace-test",
-    "titleHe": "בדיקת ACE בסרקואידוזיס",
-    "titleEn": "ACE Testing in Sarcoidosis",
-    "summaryHe": "האם טיפול מוקדם עוזר.",
-    "summaryEn": "Whether early treatment helps.",
-    "checkedHe": "מה נבדק: האם טיפול מוקדם עוזר",
-    "checkedEn": "What was examined: whether early treatment helps.",
-    "insightHe": "תובנה: טיפול מוקדם במתוטרקסט מפחית סיכון לדלקת מפרקים פסוריאטית",
-    "insightEn": "Insight: early methotrexate reduces risk of psoriatic arthritis.",
-    "date": "2025-03-01",
-    "tags": ["סרקואידוזיס", "ACE"],
-    "externalLink": "https://pubmed.ncbi.nlm.nih.gov/39716640/",
-    "sourceName": "PubMed"
-  },
-  {
-    "slug": "sacroiliac-mri-over-55",
-    "titleHe": "MRI סקרואיליאקלי מעל גיל 55",
-    "titleEn": "Sacroiliac MRI Above Age 55",
-    "summaryHe": "האם טיפול מוקדם עוזר.",
-    "summaryEn": "Whether early treatment helps.",
-    "checkedHe": "מה נבדק: האם טיפול מוקדם עוזר",
-    "checkedEn": "What was examined: whether early treatment helps.",
-    "insightHe": "תובנה: טיפול מוקדם במתוטרקסט מפחית סיכון לדלקת מפרקים פסוריאטית",
-    "insightEn": "Insight: early methotrexate reduces risk of psoriatic arthritis.",
-    "date": "2025-03-01",
-    "tags": ["MRI", "סקרואיליאקלי"],
-    "externalLink": "https://pubmed.ncbi.nlm.nih.gov/39716640/",
-    "sourceName": "PubMed"
-  },
-  {
     "slug": "jak-inhibitors-cv-risk-ra",
     "titleHe": "מעכבי JAK ומחלות לב בכל חולי RA",
     "titleEn": "JAK Inhibitors and Cardiovascular Risk in RA",

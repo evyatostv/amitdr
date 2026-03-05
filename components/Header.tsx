@@ -165,7 +165,7 @@ export function Header() {
               {isHebrew ? 'עוד' : 'More'}
             </button>
             <div
-              className={`absolute end-0 top-full mt-2 w-[min(560px,80vw)] rounded-2xl border border-brand-100 bg-white p-3 shadow-soft transition-all duration-200 ${
+              className={`absolute start-0 top-full mt-2 w-[min(560px,80vw)] rounded-2xl border border-brand-100 bg-white p-3 shadow-soft transition-all duration-200 ${
                 moreOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
               }`}
             >

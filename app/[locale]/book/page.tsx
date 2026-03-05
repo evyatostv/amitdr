@@ -121,6 +121,18 @@ export default async function BookPage({params}: {params: {locale: 'he' | 'en'}}
                     : 'J Medical Clinic, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12.'}
                 </a>
               </p>
+              <div className="mt-4 overflow-hidden rounded-xl border border-brand-100">
+                <iframe
+                  title={locale === 'he' ? 'מפת מיקום המרפאה' : 'Clinic location map'}
+                  src="https://maps.google.com/maps?q=Derech%20Yitzhak%20Rabin%201%2C%20Petah%20Tikva%2C%20Israel&z=16&output=embed"
+                  width="100%"
+                  height="260"
+                  style={{border: 0}}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </article>
           </MotionReveal>
         </div>

@@ -187,10 +187,10 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
 
           <MotionReveal delay={0.1}>
             <article className="card h-full bg-gradient-to-br from-white to-brand-50 p-6">
-              <p className="text-3xl font-black text-brand-700 sm:text-4xl">
+              <p className="text-3xl font-black text-slate-900 sm:text-4xl">
                 20+ {locale === 'he' ? 'שנות נסיון קליני' : 'Years of Experience'}
               </p>
-              <div className="mt-4 space-y-2 text-sm text-slate-700">
+              <div className="mt-4 space-y-2 text-sm text-brand-700">
                 <p>
                   {locale === 'he'
                     ? 'רופא מומחה בכיר ביחידה הראומטולוגית ובמחלקה פנימית ו׳ בתל השומר. מרכז תחום מחלות מפרקים חריפות במאושפזים.'
@@ -288,11 +288,6 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
             <h2 className="mb-3 text-2xl font-black text-slate-900 sm:text-3xl">
               {locale === 'he' ? 'מידע מהיר' : 'Quick Information'}
             </h2>
-            <p className="mb-6 max-w-3xl text-slate-700">
-              {locale === 'he'
-                ? 'במקום תפריט עמוס: כל המידע החשוב נמצא כאן בלחיצה אחת.'
-                : 'Instead of a crowded menu, important information is available here in one click.'}
-            </p>
           </MotionReveal>
           <HomeInfoPopups locale={locale} />
         </div>

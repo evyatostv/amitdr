@@ -37,6 +37,29 @@ function parsePubMedFeed(xml: string): PubMedFeedItem[] {
   }));
 }
 
+function normalizePubMedUrl(url: string) {
+  try {
+    const parsed = new URL(url);
+    if (!parsed.hostname.includes('pubmed.ncbi.nlm.nih.gov')) {
+      return url;
+    }
+    return `${parsed.origin}${parsed.pathname}`.replace(/\/$/, '');
+  } catch {
+    return url.replace(/\/$/, '');
+  }
+}
+
+function toIsoDate(dateValue: string) {
+  if (!dateValue) {
+    return '';
+  }
+  const parsed = new Date(dateValue);
+  if (Number.isNaN(parsed.getTime())) {
+    return '';
+  }
+  return parsed.toISOString().slice(0, 10);
+}
+
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
 
@@ -65,37 +88,45 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
     pubmedFeedItems = [];
   }
 
-  const localPubMedLinks = new Set(
-    articleItems.map((item) => item.externalLink).filter(Boolean)
-  );
-  const mergedFeedItems = pubmedFeedItems
-    .filter((item) => item.link && !localPubMedLinks.has(item.link))
-    .slice(0, 9);
-
-  const researchItems = [
-    {
-      titleHe: 'טיפול בהתקף חריף: הזרקה מהירה של אנקינרה',
-      titleEn: 'Acute Attack Treatment: Fast Anakinra Injection',
-      checkedHe: 'מה נבדק במחקר: האם אפשר לעצור התקף FMF בעזרת זריקת בודדת של קינרת?',
-      checkedEn: 'What was examined: can a single Kineret injection stop an FMF attack?',
-      insightHe:
-        'תובנה למטופל: זריקה בודדת של התרופה הביולוגית אנקינרה (קינרת) שניתנת בזמן, יכולה לעצור את ההתקף ולצמצם משמעותית את הכאב ואת משכו!',
-      insightEn:
-        'Patient insight: a timely single Anakinra (Kineret) injection can stop the attack and significantly reduce pain and duration.',
-      link: 'https://pubmed.ncbi.nlm.nih.gov/41133353/'
-    },
-    {
-      titleHe: 'תגובה לטיפול באילריס אחרי כישלון קינרת',
-      titleEn: 'Response to Ilaris After Kineret Failure',
-      checkedHe: 'מה נבדק במחקר: האם חולים שלא הגיבו לקינרת יכולים להגיב לאילריס?',
-      checkedEn: 'What was examined: can patients who failed Kineret still respond to Ilaris?',
-      insightHe:
-        'תובנה למטופל: גם אחרי כישלון באנאקינרה, טיפול באילריס עשוי להיות יעיל ולהביא לשיפור משמעותי.',
-      insightEn:
-        'Patient insight: even after Anakinra failure, Ilaris may still be effective and provide meaningful improvement.',
-      link: 'https://pubmed.ncbi.nlm.nih.gov/34369359/'
-    }
-  ];
+  const seenLinks = new Set<string>();
+  const unifiedItems = [
+    ...articleItems.map((item) => ({
+      id: item.slug,
+      titleHe: item.titleHe,
+      titleEn: item.titleEn,
+      checkedHe: item.checkedHe,
+      checkedEn: item.checkedEn,
+      insightHe: item.insightHe,
+      insightEn: item.insightEn,
+      date: item.date,
+      tags: item.tags,
+      externalLink: item.externalLink
+    })),
+    ...pubmedFeedItems.map((item, index) => ({
+      id: `feed-${index}-${normalizePubMedUrl(item.link)}`,
+      titleHe: item.title,
+      titleEn: item.title,
+      checkedHe: `מה נבדק: ${item.description || 'תקציר לא זמין.'}`,
+      checkedEn: `What was examined: ${item.description || 'Summary not available.'}`,
+      insightHe: 'תובנה: למידע המלא והמדויק יש לפתוח את המחקר המלא ב-PubMed.',
+      insightEn: 'Insight: open the full study on PubMed for complete details.',
+      date: toIsoDate(item.pubDate),
+      tags: ['פאבמד'],
+      externalLink: item.link
+    }))
+  ]
+    .filter((item) => {
+      if (!item.externalLink) {
+        return false;
+      }
+      const normalized = normalizePubMedUrl(item.externalLink);
+      if (seenLinks.has(normalized)) {
+        return false;
+      }
+      seenLinks.add(normalized);
+      return true;
+    })
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
     <section className="section-space overflow-x-hidden">
@@ -111,9 +142,9 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
           </div>
         </MotionReveal>
 
-        <div className="mb-8 space-y-4">
+        <div className="mb-8 grid gap-3 sm:grid-cols-2">
           <MotionReveal>
-            <div className="mx-auto w-full max-w-[750px] overflow-hidden rounded-2xl border border-brand-100 bg-white">
+            <div className="w-full overflow-hidden rounded-xl border border-brand-100 bg-white">
               <div className="relative w-full" style={{paddingTop: '56.25%'}}>
                 <iframe
                   src="https://player.vimeo.com/video/1010353933?h=f5ca7c3ece&badge=0&autopause=0&player_id=0&app_id=58479"
@@ -130,7 +161,7 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
           </MotionReveal>
 
           <MotionReveal delay={0.06}>
-            <div className="mx-auto w-full max-w-[750px] overflow-hidden rounded-2xl border border-brand-100 bg-white">
+            <div className="w-full overflow-hidden rounded-xl border border-brand-100 bg-white">
               <div className="relative w-full" style={{paddingTop: '56.25%'}}>
                 <iframe
                   src="https://www.youtube.com/embed/MFk2HQkAGZg?si=XIokIDkcLerBOvQl"
@@ -145,7 +176,7 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
           </MotionReveal>
 
           <MotionReveal delay={0.12}>
-            <div className="mx-auto w-full max-w-[750px] overflow-hidden rounded-2xl border border-brand-100 bg-white">
+            <div className="w-full overflow-hidden rounded-xl border border-brand-100 bg-white">
               <div className="relative w-full" style={{paddingTop: '56.25%'}}>
                 <iframe
                   src="https://www.youtube.com/embed/ffTKKeekXjM?si=-MT5dT6e6NReUUOR"
@@ -158,76 +189,31 @@ export default async function ArticlesPage({params}: {params: {locale: 'he' | 'e
               </div>
             </div>
           </MotionReveal>
-        </div>
 
-        <MotionReveal>
-          <div className="mb-8 rounded-3xl bg-[#e7e7e7] p-6 text-center sm:p-10">
-            <h2 className="mb-8 text-3xl font-black text-slate-900 sm:text-5xl">
-              {locale === 'he' ? 'מחקרים בהם היה ד״ר דרוין שותף' : 'Research Involving Dr Druyan'}
-            </h2>
-            <div className="grid gap-6 lg:grid-cols-2">
-              {researchItems.map((item) => (
-                <article key={item.link} className="rounded-2xl bg-white/70 p-5 text-slate-900">
-                  <h3 className="mb-3 text-2xl font-black">
-                    {locale === 'he' ? item.titleHe : item.titleEn}
-                  </h3>
-                  <p className="mb-3 text-xl">{locale === 'he' ? item.checkedHe : item.checkedEn}</p>
-                  <p className="mb-4 text-xl">{locale === 'he' ? item.insightHe : item.insightEn}</p>
-                  <p className="text-xl break-words">
-                    {locale === 'he' ? 'קישור למחקר:' : 'Study link:'}{' '}
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline break-all"
-                    >
-                      {item.link}
-                    </a>
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </MotionReveal>
-
-        <ArticleFilters articles={articleItems} locale={locale} />
-
-        {mergedFeedItems.length > 0 ? (
-          <MotionReveal>
-            <div className="mt-8">
-              <h2 className="mb-4 text-2xl font-black text-slate-900">
-                {locale === 'he' ? 'עדכונים נוספים מ-PubMed' : 'More from PubMed'}
-              </h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {mergedFeedItems.map((item) => (
-                  <article className="card flex h-full flex-col" key={item.link}>
-                    <p className="mb-2 text-xs text-slate-500">
-                      {item.pubDate
-                        ? new Date(item.pubDate).toLocaleDateString(
-                            locale === 'he' ? 'he-IL' : 'en-US'
-                          )
-                        : ''}
-                    </p>
-                    <h3 className="mb-2 text-lg font-semibold text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="mb-3 line-clamp-5 text-sm text-slate-700">
-                      {item.description}
-                    </p>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto pt-2 text-sm font-semibold text-brand-700 underline"
-                    >
-                      {locale === 'he' ? 'לפרטים ב-PubMed' : 'Read more on PubMed'}
-                    </a>
-                  </article>
-                ))}
+          <MotionReveal delay={0.18}>
+            <div className="w-full overflow-hidden rounded-xl border border-brand-100 bg-white">
+              <div className="relative w-full" style={{paddingTop: '56.25%'}}>
+                <iframe
+                  src="https://www.youtube.com/embed/xdaWxoBabgg?si=gFEzqoQdEjJkcN6H"
+                  className="absolute left-0 top-0 h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  title={locale === 'he' ? 'סרטון יוטיוב 3' : 'YouTube Video 3'}
+                />
               </div>
             </div>
           </MotionReveal>
-        ) : null}
+        </div>
+
+        <MotionReveal>
+          <div className="mb-8">
+            <h2 className="mb-4 text-2xl font-black text-slate-900 sm:text-3xl">
+              {locale === 'he' ? 'כל המחקרים במקום אחד' : 'All Research in One Place'}
+            </h2>
+            <ArticleFilters items={unifiedItems} locale={locale} />
+          </div>
+        </MotionReveal>
       </div>
       <Script src="https://player.vimeo.com/api/player.js" />
     </section>

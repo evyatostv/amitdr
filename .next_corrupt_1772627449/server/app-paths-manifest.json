@@ -1,0 +1,21 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/icon.png/route": "app/icon.png/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/page": "app/page.js",
+  "/[locale]/about/page": "app/[locale]/about/page.js",
+  "/[locale]/conditions/page": "app/[locale]/conditions/page.js",
+  "/[locale]/book/page": "app/[locale]/book/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/privacy/page": "app/[locale]/privacy/page.js",
+  "/[locale]/terms/page": "app/[locale]/terms/page.js",
+  "/[locale]/services/page": "app/[locale]/services/page.js",
+  "/[locale]/contact/page": "app/[locale]/contact/page.js",
+  "/[locale]/articles/page": "app/[locale]/articles/page.js",
+  "/[locale]/medical-disclaimer/page": "app/[locale]/medical-disclaimer/page.js",
+  "/[locale]/faq/page": "app/[locale]/faq/page.js",
+  "/[locale]/accessibility/page": "app/[locale]/accessibility/page.js",
+  "/[locale]/articles/[slug]/page": "app/[locale]/articles/[slug]/page.js"
+}
