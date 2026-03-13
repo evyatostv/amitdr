@@ -40,6 +40,18 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <Script id="console-legal-warning" strategy="afterInteractive">
           {consoleWarningScript}
         </Script>
+        <script
+          src="https://widget.tabnav.com/limited-widget.min.js.gz"
+          {...{
+            'tnv-data-config':
+              '{"language":"he","color":"#283c8c","buttonColor":"#283c8c","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}'
+          }}
+          defer
+        />
+        <noscript>
+          פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568
+          <a href="https://tabnav.com/he">הנגשת אתרים</a>
+        </noscript>
         {children}
       </body>
     </html>
