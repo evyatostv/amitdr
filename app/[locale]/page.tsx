@@ -170,7 +170,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
       <section className="section-space">
         <div className="container-main grid items-stretch gap-6 lg:grid-cols-2">
           <MotionReveal>
-            <article className="card bg-gradient-to-br from-white to-brand-50/50 p-6">
+            <article className="card bg-gradient-to-br from-white to-brand-50 p-6">
               <h2 className="mb-3 text-3xl font-black text-slate-900">
                 {locale === 'he' ? 'אודות ד"ר עמית דרוין' : 'About Dr Amit Druyan'}
               </h2>
@@ -186,7 +186,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
           </MotionReveal>
 
           <MotionReveal delay={0.1}>
-            <article className="card h-full bg-gradient-to-br from-white to-brand-50 p-6">
+            <article className="card h-full bg-gradient-to-br from-white to-brand-50/50 p-6">
               <p className="text-3xl font-black text-slate-900 sm:text-4xl">
                 20+ {locale === 'he' ? 'שנות נסיון קליני' : 'Years of Experience'}
               </p>

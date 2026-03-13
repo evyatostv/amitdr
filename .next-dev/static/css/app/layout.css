@@ -513,6 +513,9 @@ video {
   white-space: nowrap;
   border-width: 0;
 }
+.pointer-events-none {
+  pointer-events: none;
+}
 .\!visible {
   visibility: visible !important;
 }
@@ -534,6 +537,9 @@ video {
 .sticky {
   position: sticky;
 }
+.inset-0 {
+  inset: 0px;
+}
 .inset-x-0 {
   left: 0px;
   right: 0px;
@@ -547,6 +553,9 @@ video {
 .left-0 {
   left: 0px;
 }
+.left-1\/2 {
+  left: 50%;
+}
 .right-5 {
   right: 1.25rem;
 }
@@ -555,6 +564,9 @@ video {
 }
 .top-0 {
   top: 0px;
+}
+.top-1\/2 {
+  top: 50%;
 }
 .top-\[18px\] {
   top: 18px;
@@ -567,6 +579,9 @@ video {
 }
 .z-50 {
   z-index: 50;
+}
+.z-\[120\] {
+  z-index: 120;
 }
 .z-\[80\] {
   z-index: 80;
@@ -653,6 +668,9 @@ video {
 .h-2\.5 {
   height: 0.625rem;
 }
+.h-28 {
+  height: 7rem;
+}
 .h-5 {
   height: 1.25rem;
 }
@@ -680,6 +698,9 @@ video {
 .w-2\.5 {
   width: 0.625rem;
 }
+.w-28 {
+  width: 7rem;
+}
 .w-5 {
   width: 1.25rem;
 }
@@ -704,17 +725,22 @@ video {
 .max-w-5xl {
   max-width: 64rem;
 }
-.max-w-\[750px\] {
-  max-width: 750px;
-}
 .max-w-lg {
   max-width: 32rem;
 }
 .flex-1 {
   flex: 1 1 0%;
 }
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .-translate-y-1 {
   --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .-translate-y-\[9px\] {
@@ -864,6 +890,9 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(209 250 229 / var(--tw-border-opacity, 1));
 }
+.border-brand-100\/70 {
+  border-color: rgb(209 250 229 / 0.7);
+}
 .border-brand-200 {
   --tw-border-opacity: 1;
   border-color: rgb(167 243 208 / var(--tw-border-opacity, 1));
@@ -918,6 +947,9 @@ video {
 }
 .bg-white\/85 {
   background-color: rgb(255 255 255 / 0.85);
+}
+.bg-\[radial-gradient\(circle_at_20\%_18\%\2c rgba\(106\2c 209\2c 173\2c 0\.28\)\2c transparent_38\%\)\2c radial-gradient\(circle_at_85\%_15\%\2c rgba\(30\2c 58\2c 138\2c 0\.16\)\2c transparent_44\%\)\2c linear-gradient\(180deg\2c \#edf8f4_0\%\2c \#f7fbfc_58\%\2c \#ffffff_100\%\)\] {
+  background-image: radial-gradient(circle at 20% 18%,rgba(106,209,173,0.28),transparent 38%),radial-gradient(circle at 85% 15%,rgba(30,58,138,0.16),transparent 44%),linear-gradient(180deg,#edf8f4 0%,#f7fbfc 58%,#ffffff 100%);
 }
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
@@ -1152,6 +1184,11 @@ video {
 .opacity-80 {
   opacity: 0.8;
 }
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 .shadow-soft {
   --tw-shadow: 0 10px 30px -12px rgba(13, 38, 46, 0.2);
   --tw-shadow-colored: 0 10px 30px -12px var(--tw-shadow-color);
@@ -1168,6 +1205,10 @@ video {
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .backdrop-blur-xl {
   --tw-backdrop-blur: blur(24px);
@@ -1214,6 +1255,11 @@ video {
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+}
+
+body {
+  overscroll-behavior-y: none;
 }
 
 html.lenis,
@@ -1569,6 +1615,14 @@ select:focus-visible {
 }
 
 @media (min-width: 640px) {
+
+  .sm\:h-32 {
+    height: 8rem;
+  }
+
+  .sm\:w-32 {
+    width: 8rem;
+  }
 
   .sm\:w-auto {
     width: auto;

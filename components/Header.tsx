@@ -88,6 +88,7 @@ export function Header() {
           href="/"
           locale={currentLocale}
           className="inline-flex items-center p-0"
+          data-logo-anchor="header-logo"
           aria-label={t('siteName')}
         >
           <Image

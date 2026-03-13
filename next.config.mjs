@@ -1,9 +1,12 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
-const isPagesBuild = process.env.GITHUB_ACTIONS === 'true';
-const repoBasePath = '/amitdr';
 const isDev = process.env.NODE_ENV === 'development';
+const configuredBasePath = (process.env.NEXT_BASE_PATH ?? process.env.NEXT_PUBLIC_BASE_PATH ?? '').trim();
+const normalizedBasePath =
+  configuredBasePath && configuredBasePath !== '/'
+    ? `/${configuredBasePath.replace(/^\/+|\/+$/g, '')}`
+    : '';
 
 const nextConfig = {
   // Isolate dev artifacts from build artifacts to prevent cross-corruption.
@@ -13,13 +16,13 @@ const nextConfig = {
     unoptimized: true
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: isPagesBuild ? repoBasePath : ''
+    NEXT_PUBLIC_BASE_PATH: normalizedBasePath
   },
   trailingSlash: true,
-  basePath: isPagesBuild ? repoBasePath : '',
-  assetPrefix: isPagesBuild ? `${repoBasePath}/` : undefined,
+  basePath: normalizedBasePath,
+  assetPrefix: normalizedBasePath ? `${normalizedBasePath}/` : undefined,
   redirects: async () =>
-    isPagesBuild
+    normalizedBasePath
       ? []
       : [
           {

@@ -61,3 +61,7 @@ Redirects are configured in `next.config.mjs` from typo/legacy booking URLs to `
 3. Set environment variables from `.env.example`.
 4. Deploy (`npm run build` as default build command).
 
+## Base path (for static deployments)
+- Default build output assumes root hosting (`/`), e.g. `https://amitdr.com/`.
+- To host under a subpath (e.g. GitHub Pages project URL), set `NEXT_BASE_PATH` to that path, for example `/amitdr`.
+- `NEXT_PUBLIC_BASE_PATH` is derived from the same value and exposed to the client.
