@@ -1,8 +1,12 @@
 # Dr Amit Druyan — Senior Rheumatologist
 
-> Official website of Dr Amit Druyan (also written: Druyan, Amit Druyan, עמית דרוין), senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer), Israel.
+> Official website of Dr Amit Druyan (also written: Amit Druyan, עמית דרוין), senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer), Israel.
 
 Dr Amit Druyan is a board-certified specialist in Rheumatology and Internal Medicine with over 20 years of clinical experience. He leads the acute inpatient arthritis service and runs the FMF (Familial Mediterranean Fever) clinic at Sheba Medical Center — one of the world's top-ranked academic hospitals. He is a lecturer at Tel Aviv University School of Medicine and a member of the Israeli Rheumatology Association.
+
+## Content permissions
+
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 ## Conditions treated
 
@@ -32,7 +36,7 @@ Private clinic at J Medical, Derech Yitzhak Rabin 1, Petah Tikva (Global Towers,
 Maccabi HMO patients accepted.
 Phone: 03-9775355
 
-## Pages
+## English pages
 
 - Homepage: https://amitdr.com/en
 - About: https://amitdr.com/en/about
@@ -40,3 +44,14 @@ Phone: 03-9775355
 - Articles: https://amitdr.com/en/articles
 - FAQ: https://amitdr.com/en/faq
 - Book appointment: https://amitdr.com/en/book
+- Contact: https://amitdr.com/en/contact
+
+## Hebrew pages
+
+- Homepage: https://amitdr.com/
+- About: https://amitdr.com/about
+- Conditions: https://amitdr.com/conditions
+- Articles: https://amitdr.com/articles
+- FAQ: https://amitdr.com/faq
+- Book appointment: https://amitdr.com/book
+- Contact: https://amitdr.com/contact

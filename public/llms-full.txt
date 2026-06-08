@@ -1,0 +1,177 @@
+# Dr Amit Druyan — Senior Rheumatologist | Full Site Content
+
+> Official website of Dr Amit Druyan (also written: Amit Druyan, עמית דרוין), senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer), Israel.
+
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+---
+
+## About Dr Amit Druyan
+
+Dr Amit Druyan is a board-certified senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer), one of the world's top-ranked academic medical centers. He has over 20 years of clinical experience treating chronic inflammatory and autoimmune rheumatic diseases.
+
+He leads the acute inpatient arthritis service and runs the FMF (Familial Mediterranean Fever) clinic at Sheba Medical Center. He is a lecturer in Internal Medicine at Tel Aviv University School of Medicine and a member of the Israeli Rheumatology Association.
+
+Dr Druyan completed his medical degree under the Academic Reserve program at the Hebrew University–Hadassah Medical School in Jerusalem, followed by a residency in Internal Medicine and a fellowship in Rheumatology at Sheba Medical Center.
+
+His clinical approach: every patient receives a structured disease-activity assessment, a clear evidence-based treatment plan, and close long-term follow-up adjusted to their response.
+
+URL: https://amitdr.com/en/about
+
+---
+
+## Credentials
+
+- Medical degree: Hebrew University–Hadassah Medical School, Jerusalem (Academic Reserve program)
+- Internship: Soroka University Medical Center, Beer Sheva
+- Residency: Internal Medicine, Sheba Medical Center, Tel HaShomer
+- Fellowship: Rheumatology, Sheba Medical Center, Tel HaShomer
+- Board certification: Internal Medicine (Israeli Medical Association)
+- Board certification: Rheumatology (Israeli Medical Association)
+- Member: Israeli Rheumatology Association
+- Lecturer: Tel Aviv University School of Medicine, Faculty of Medicine
+- Senior Physician: Rheumatology Unit, Sheba Medical Center
+- Senior Physician: Internal Medicine Department F (Ward 6), Sheba Medical Center
+
+---
+
+## Conditions Treated
+
+### Familial Mediterranean Fever (FMF)
+Dr Druyan is a physician in the FMF clinic at Sheba Medical Center — one of Israel's leading centers for this condition. FMF is a hereditary autoinflammatory disease causing recurrent fever attacks and serositis. Treatment includes colchicine and, when needed, IL-1 inhibitors such as Anakinra (Kineret) or Canakinumab (Ilaris).
+URL: https://amitdr.com/en/conditions
+
+### Inflammatory Arthritis
+Includes rheumatoid arthritis (RA), psoriatic arthritis (PsA), and ankylosing spondylitis (AS). Early diagnosis and tailored treatment to reduce pain and preserve joint function. Treatment approaches include DMARDs, biologic agents, and JAK inhibitors.
+
+### Gout
+Controlling acute flares, lowering uric acid, and preventing progressive joint damage. Urate-lowering therapy adjusted to target serum urate levels.
+
+### Systemic Lupus Erythematosus (SLE)
+Diagnosis and individualized treatment of lupus including skin, joint, renal, and systemic involvement.
+
+### Scleroderma (Systemic Sclerosis)
+Diagnosis and treatment including organ-based monitoring and immunosuppressive therapy.
+
+### Vasculitis
+Precise diagnosis of blood vessel inflammation with advanced workup and immunosuppressive treatment when needed.
+
+### Other conditions
+Polymyalgia Rheumatica (PMR), Behçet Disease, Connective Tissue Disease, overlap syndromes, crystal arthropathies, reactive arthritis, osteoporosis.
+
+---
+
+## Research Articles
+
+### Acute Attack Treatment: Fast Anakinra Injection
+Date: 2025-10-01
+Can a single Kineret (Anakinra) injection stop an FMF attack? A timely single Anakinra injection can stop the attack and significantly reduce pain and duration.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/41133353/
+URL: https://amitdr.com/en/articles/fmf-ankinra-acute-attack
+
+### Characteristics of Patients With Double V694M Mutations
+Date: 2025-10-01
+Health impact of double carriage of the V694M FMF mutation. Homozygous patients have higher risk for severe disease, colchicine non-response, and complications; close monitoring is required.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/40902213/
+URL: https://amitdr.com/en/articles/fmf-v694m-double-mutation
+
+### Response to Ilaris (Canakinumab) After Kineret (Anakinra) Failure
+Date: 2021-09-01
+Ilaris can still be effective after Anakinra failure; failure on one biologic does not rule out success with another.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/34369359/
+URL: https://amitdr.com/en/articles/fmf-ilaris-after-kineret
+
+### Follow-up of FMF Patients With Amyloidosis
+Date: 2025-04-01
+Early detection and blood/urine follow-up are important to prevent kidney failure in FMF patients with amyloidosis.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/39908750/
+URL: https://amitdr.com/en/articles/fmf-amyloidosis-followup
+
+### COVID Vaccine Safety in FMF Patients
+Date: 2022-06-28
+The COVID vaccine is safe for FMF patients; those with active disease reported only mild additional side effects.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/35238382/
+URL: https://amitdr.com/en/articles/fmf-covid-vaccine-safety
+
+### Risk of Severe COVID in Autoimmune Disease
+Date: 2021-01-01
+No association was found between autoimmune disease and severe COVID risk.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/33277764/
+URL: https://amitdr.com/en/articles/autoimmune-severe-covid-risk
+
+### Plaquenil (Hydroxychloroquine) in Cutaneous Lupus
+Date: 2025-07-01
+Early treatment with Plaquenil reduces risk of progression from cutaneous to systemic lupus.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/40015570/
+URL: https://amitdr.com/en/articles/cutaneous-lupus-plaquenil
+
+### Methotrexate in Psoriasis for Psoriatic Arthritis Prevention
+Date: 2025-03-01
+Early methotrexate treatment in psoriasis patients reduces the risk of developing psoriatic arthritis.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/39716640/
+URL: https://amitdr.com/en/articles/psoriasis-methotrexate-psa-prevention
+
+### JAK Inhibitors and Cardiovascular Risk in Rheumatoid Arthritis
+Date: 2024-08-01
+Increased cardiovascular events reported with JAK inhibitors; in patients with risk factors, risk-benefit should be weighed carefully before prescribing.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/38772185/
+URL: https://amitdr.com/en/articles/jak-inhibitors-cv-risk-ra
+
+### JAK Inhibitors and Risk of Intestinal Perforation
+Date: 2025-05-01
+Increased risk of intestinal perforation reported; in patients at risk for diverticular disease, JAK inhibitor treatment should be considered with caution.
+Source: PubMed — https://pubmed.ncbi.nlm.nih.gov/39736095/
+URL: https://amitdr.com/en/articles/jak-inhibitors-gi-perforation-risk
+
+---
+
+## FAQ
+
+**How do I book an appointment?**
+Use the Book page at https://amitdr.com/en/book or call 03-9775355.
+
+**How long is a first visit?**
+20–40 minutes, including document review and treatment planning.
+
+**Is there a Maccabi HMO flow?**
+Yes. The booking page includes a dedicated Maccabi path.
+
+**What should I bring to a first visit?**
+Medical summaries, recent blood tests, imaging, and medication list.
+
+**Is long-term follow-up available?**
+Yes. Follow-up plans are based on diagnosis, disease activity, and treatment response.
+
+**Can I get a second opinion?**
+Yes, with full medical records.
+
+**What is the fastest way to contact the clinic?**
+Call 03-9775355 or use the Contact page at https://amitdr.com/en/contact.
+
+URL: https://amitdr.com/en/faq
+
+---
+
+## Clinic Location
+
+Private clinic: J Medical, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12, Petah Tikva 49510, Israel.
+Coordinates: 32.0866°N, 34.8883°E
+Phone: +972-3-9775355
+Maccabi HMO patients accepted.
+
+URL: https://amitdr.com/en/contact
+
+---
+
+## All Pages
+
+- English homepage: https://amitdr.com/en
+- Hebrew homepage: https://amitdr.com/
+- About (EN): https://amitdr.com/en/about
+- About (HE): https://amitdr.com/about
+- Conditions (EN): https://amitdr.com/en/conditions
+- Articles (EN): https://amitdr.com/en/articles
+- FAQ (EN): https://amitdr.com/en/faq
+- Book (EN): https://amitdr.com/en/book
+- Contact (EN): https://amitdr.com/en/contact
+- Sitemap: https://amitdr.com/sitemap.xml

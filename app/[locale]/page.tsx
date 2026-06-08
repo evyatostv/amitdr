@@ -31,6 +31,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
 
   const shebaAffiliation = {
     '@type': 'Hospital',
+    '@id': 'https://eng.sheba.co.il/#organization',
     name: 'Sheba Medical Center',
     alternateName: 'Tel HaShomer',
     url: 'https://eng.sheba.co.il',
@@ -43,14 +44,18 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
 
   const physicianSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Physician',
+    '@type': 'IndividualPhysician',
     '@id': `${baseSiteUrl}/#physician`,
     name: 'Dr Amit Druyan',
+    givenName: 'Amit',
+    familyName: 'Druyan',
     honorificPrefix: 'Dr.',
     jobTitle: 'Senior Rheumatologist',
+    occupationalCategory: 'Rheumatologist',
     description:
-      'Dr Amit Druyan is a senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer) with over 20 years of clinical experience. He specializes in FMF, rheumatoid arthritis, vasculitis, lupus, scleroderma, and other inflammatory autoimmune diseases, providing personalized treatment plans and long-term follow-up.',
+      'Dr Amit Druyan is a board-certified senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer) with over 20 years of clinical experience. He leads acute inpatient arthritis care and runs the FMF clinic. He is a member of the Israeli Rheumatology Association and a lecturer at Tel Aviv University School of Medicine.',
     medicalSpecialty: ['Rheumatology', 'Internal Medicine'],
+    practicesAt: shebaAffiliation,
     worksFor: shebaAffiliation,
     affiliation: [
       shebaAffiliation,
@@ -72,15 +77,24 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
     hasCredential: [
       {
         '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Medical Specialty',
-        recognizedBy: {'@type': 'Organization', name: 'Israeli Medical Association'},
-        name: 'Specialist in Rheumatology'
+        credentialCategory: 'degree',
+        recognizedBy: {
+          '@type': 'EducationalOrganization',
+          name: 'Hebrew University-Hadassah Medical School'
+        },
+        name: 'Doctor of Medicine (MD)'
       },
       {
         '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Medical Specialty',
+        credentialCategory: 'specialization',
         recognizedBy: {'@type': 'Organization', name: 'Israeli Medical Association'},
-        name: 'Specialist in Internal Medicine'
+        name: 'Board Certification in Rheumatology'
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'specialization',
+        recognizedBy: {'@type': 'Organization', name: 'Israeli Medical Association'},
+        name: 'Board Certification in Internal Medicine'
       }
     ],
     knowsAbout: [
@@ -98,7 +112,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
       'Biologic Therapy',
       'Disease-Modifying Antirheumatic Drugs (DMARDs)'
     ],
-    url: baseSiteUrl,
+    url: `${baseSiteUrl}/en/about`,
     image: `${baseSiteUrl}/images/amit-doctor-portrait.jpg`,
     telephone: '+972-3-9775355',
     sameAs: [
@@ -110,7 +124,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
 
   const clinicSchema = {
     '@context': 'https://schema.org',
-    '@type': 'MedicalClinic',
+    '@type': 'PhysiciansOffice',
     '@id': `${baseSiteUrl}/#clinic`,
     name: 'Dr Amit Druyan Rheumatology Clinic',
     description:
@@ -120,11 +134,17 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
     telephone: '+972-3-9775355',
     url: baseSiteUrl,
     physician: {'@id': `${baseSiteUrl}/#physician`},
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 32.0866,
+      longitude: 34.8883
+    },
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IL',
       addressLocality: 'Petah Tikva',
-      streetAddress: 'J Medical, Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12'
+      postalCode: '49510',
+      streetAddress: 'Derech Yitzhak Rabin 1, Global Towers, Building A, Floor 12'
     }
   };
 
