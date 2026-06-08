@@ -1,8 +1,9 @@
 import {notFound} from 'next/navigation';
 import {articleItems, getArticleBySlug} from '@/lib/content';
 import {CheckInsightLink} from '@/components/CheckInsightLink';
-import {buildMetadata} from '@/lib/seo';
+import {buildMetadata, baseSiteUrl} from '@/lib/seo';
 import {Link} from '@/lib/i18n/navigation';
+import Script from 'next/script';
 
 export function generateStaticParams() {
   return articleItems.map((article) => ({slug: article.slug}));
@@ -32,9 +33,40 @@ export default async function ArticleDetailPage({params}: {params: {locale: 'he'
     notFound();
   }
 
+  const articleUrl = `${baseSiteUrl}${locale === 'he' ? '' : '/en'}/articles/${article.slug}`;
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    url: articleUrl,
+    name: locale === 'he' ? article.titleHe : article.titleEn,
+    description: locale === 'he' ? article.summaryHe : article.summaryEn,
+    datePublished: article.date,
+    author: {
+      '@type': 'Physician',
+      '@id': `${baseSiteUrl}/#physician`,
+      name: 'Dr Amit Druyan'
+    },
+    publisher: {
+      '@type': 'MedicalClinic',
+      '@id': `${baseSiteUrl}/#clinic`,
+      name: 'Dr Amit Druyan'
+    },
+    about: {
+      '@type': 'MedicalCondition',
+      name: (article.tags || []).join(', ')
+    },
+    citation: article.externalLink
+      ? {'@type': 'CreativeWork', url: article.externalLink, name: article.sourceName}
+      : undefined
+  };
+
   return (
-    <section className="section-space">
-      <div className="container-main max-w-3xl">
+    <>
+      <Script id="schema-article" type="application/ld+json">
+        {JSON.stringify(articleSchema)}
+      </Script>
+      <section className="section-space">
+        <div className="container-main max-w-3xl">
         <Link
           href="/articles"
           locale={locale}
@@ -55,7 +87,8 @@ export default async function ArticleDetailPage({params}: {params: {locale: 'he'
           link={article.externalLink}
           source={article.sourceName}
         />
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

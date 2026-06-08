@@ -1,6 +1,7 @@
 import {MotionReveal} from '@/components/MotionReveal';
-import {buildMetadata} from '@/lib/seo';
+import {buildMetadata, baseSiteUrl} from '@/lib/seo';
 import Image from 'next/image';
+import Script from 'next/script';
 import {withBasePath} from '@/lib/asset-path';
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
@@ -20,8 +21,41 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
 export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
 
+  const profileSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: `${baseSiteUrl}${locale === 'he' ? '/about' : '/en/about'}`,
+    mainEntity: {
+      '@type': 'Physician',
+      '@id': `${baseSiteUrl}/#physician`,
+      name: 'Dr Amit Druyan',
+      honorificPrefix: 'Dr.',
+      jobTitle: 'Senior Rheumatologist',
+      description:
+        'Dr Amit Druyan is a senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer) with over 20 years of clinical experience. He leads acute inpatient arthritis care and runs the FMF clinic at one of the world\'s leading medical centers. He is a board-certified specialist in both Internal Medicine and Rheumatology and a lecturer at Tel Aviv University School of Medicine.',
+      medicalSpecialty: ['Rheumatology', 'Internal Medicine'],
+      worksFor: {
+        '@type': 'Hospital',
+        name: 'Sheba Medical Center',
+        url: 'https://eng.sheba.co.il'
+      },
+      alumniOf: {
+        '@type': 'EducationalOrganization',
+        name: 'Hebrew University-Hadassah Medical School'
+      },
+      memberOf: {
+        '@type': 'Organization',
+        name: 'Israeli Rheumatology Association'
+      }
+    }
+  };
+
   return (
-    <section className="section-space">
+    <>
+      <Script id="schema-profile" type="application/ld+json">
+        {JSON.stringify(profileSchema)}
+      </Script>
+      <section className="section-space">
       <div className="container-main max-w-5xl">
         <MotionReveal>
           <div className="mb-6 rounded-3xl border border-brand-100 bg-gradient-to-br from-white to-brand-50/60 p-6 sm:p-8">
@@ -59,13 +93,31 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
                 <div className="space-y-4 text-slate-700">
                   <p>
                     Dr Amit Druyan is a senior physician in the Rheumatology Unit and FMF clinic at Sheba Medical
-                    Center, Tel Hashomer. As a specialist in Internal Medicine and Rheumatology, he treats a wide range
-                    of chronic inflammatory rheumatic diseases including RA, ankylosing spondylitis, FMF, gout,
-                    vasculitis, scleroderma and SLE.
+                    Center, Tel Hashomer — one of the world&apos;s leading academic medical centers. As a
+                    board-certified specialist in both Internal Medicine and Rheumatology, he has more than 20 years
+                    of clinical experience treating chronic inflammatory and autoimmune rheumatic diseases.
                   </p>
                   <p>
-                    He is known for attentive, personalized care and for building precise treatment plans tailored to
-                    each patient, with close follow-up through all diagnostic and treatment stages.
+                    His clinical focus covers rheumatoid arthritis (RA), ankylosing spondylitis, psoriatic arthritis,
+                    Familial Mediterranean Fever (FMF), gout, vasculitis, scleroderma, lupus (SLE), polymyalgia
+                    rheumatica, Behçet disease, and other connective tissue diseases. He leads acute inpatient
+                    arthritis care at the Internal Medicine Department F (6) at Tel HaShomer.
+                  </p>
+                  <p>
+                    Dr Druyan completed his medical degree under the Academic Reserve program at the Hebrew
+                    University–Hadassah Medical School in Jerusalem, followed by a residency in Internal Medicine
+                    and a fellowship in Rheumatology at Sheba Medical Center. He is a member of the Israeli
+                    Rheumatology Association.
+                  </p>
+                  <p>
+                    Alongside his clinical role, Dr Druyan is a lecturer in Internal Medicine at the Tel Aviv
+                    University School of Medicine. He is committed to evidence-based, personalized treatment:
+                    every patient receives a structured disease-activity assessment, a clear treatment plan, and
+                    close long-term follow-up adjusted to their response.
+                  </p>
+                  <p>
+                    Private clinic appointments are available at J Medical, Derech Yitzhak Rabin 1, Petah Tikva
+                    (Global Towers, Building A, 12th floor). Maccabi HMO patients can book through the fund.
                   </p>
                 </div>
               )}
@@ -84,5 +136,6 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
         </MotionReveal>
       </div>
     </section>
+    </>
   );
 }

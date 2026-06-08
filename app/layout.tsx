@@ -4,10 +4,29 @@ import Script from 'next/script';
 import {withBasePath} from '@/lib/asset-path';
 import {SmoothScroll} from '@/components/SmoothScroll';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amitdr.com';
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: 'Dr Amit Druyan',
+  description:
+    'Official website of Dr Amit Druyan, senior rheumatologist at Sheba Medical Center. Specialist in FMF, RA, vasculitis, lupus, scleroderma and inflammatory arthritis.',
+  inLanguage: ['he', 'en'],
+  publisher: {
+    '@type': 'Physician',
+    '@id': `${siteUrl}/#physician`,
+    name: 'Dr Amit Druyan'
+  }
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://amitdr.com'),
-  title: 'Dr Amit Druyan',
-  description: 'Rheumatology care in Israel',
+  title: 'Dr Amit Druyan | Senior Rheumatologist – Sheba Medical Center',
+  description:
+    'Dr Amit Druyan — senior rheumatologist and internal medicine specialist at Sheba Medical Center. Expert in FMF, rheumatoid arthritis, vasculitis, lupus, scleroderma and inflammatory arthritis. 20+ years clinical experience. Private clinic in Petah Tikva.',
   icons: {
     icon: [
       {url: withBasePath('/images/logo-icon.png'), type: 'image/png'},
@@ -36,6 +55,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="he">
       <body>
+        <Script id="schema-website" type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </Script>
         <SmoothScroll />
         <Script id="console-legal-warning" strategy="afterInteractive">
           {consoleWarningScript}

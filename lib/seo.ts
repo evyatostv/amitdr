@@ -19,6 +19,8 @@ export function buildMetadata({
   return {
     title,
     description,
+    authors: [{name: 'Dr Amit Druyan', url: siteUrl}],
+    creator: 'Dr Amit Druyan',
     alternates: {
       canonical: url,
       languages: {

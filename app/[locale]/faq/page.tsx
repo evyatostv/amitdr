@@ -1,6 +1,7 @@
 import {MotionReveal} from '@/components/MotionReveal';
 import {FaqAccordion} from '@/components/FaqAccordion';
 import {buildMetadata} from '@/lib/seo';
+import Script from 'next/script';
 
 export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
@@ -84,14 +85,32 @@ export default async function FaqPage({params}: {params: {locale: 'he' | 'en'}})
           }
         ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: qa.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a
+      }
+    }))
+  };
+
   return (
-    <section className="section-space">
-      <div className="container-main max-w-4xl">
-        <MotionReveal>
-          <h1 className="mb-5 text-3xl font-black text-slate-900">{locale === 'he' ? 'שאלות נפוצות' : 'FAQ'}</h1>
-        </MotionReveal>
-        <FaqAccordion items={qa} questionnaireUrl={questionnaireUrl} />
-      </div>
-    </section>
+    <>
+      <Script id="schema-faq" type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </Script>
+      <section className="section-space">
+        <div className="container-main max-w-4xl">
+          <MotionReveal>
+            <h1 className="mb-5 text-3xl font-black text-slate-900">{locale === 'he' ? 'שאלות נפוצות' : 'FAQ'}</h1>
+          </MotionReveal>
+          <FaqAccordion items={qa} questionnaireUrl={questionnaireUrl} />
+        </div>
+      </section>
+    </>
   );
 }

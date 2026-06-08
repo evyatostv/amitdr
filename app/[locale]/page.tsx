@@ -29,32 +29,97 @@ export async function generateMetadata({params}: {params: {locale: 'he' | 'en'}}
 export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}) {
   const locale = params.locale;
 
+  const shebaAffiliation = {
+    '@type': 'Hospital',
+    name: 'Sheba Medical Center',
+    alternateName: 'Tel HaShomer',
+    url: 'https://eng.sheba.co.il',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Ramat Gan',
+      addressCountry: 'IL'
+    }
+  };
+
   const physicianSchema = {
     '@context': 'https://schema.org',
     '@type': 'Physician',
+    '@id': `${baseSiteUrl}/#physician`,
     name: 'Dr Amit Druyan',
-    medicalSpecialty: 'Rheumatology',
-    worksFor: 'Sheba Medical Center',
+    honorificPrefix: 'Dr.',
+    jobTitle: 'Senior Rheumatologist',
+    description:
+      'Dr Amit Druyan is a senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer) with over 20 years of clinical experience. He specializes in FMF, rheumatoid arthritis, vasculitis, lupus, scleroderma, and other inflammatory autoimmune diseases, providing personalized treatment plans and long-term follow-up.',
+    medicalSpecialty: ['Rheumatology', 'Internal Medicine'],
+    worksFor: shebaAffiliation,
+    affiliation: [
+      shebaAffiliation,
+      {
+        '@type': 'EducationalOrganization',
+        name: 'Tel Aviv University School of Medicine',
+        url: 'https://english.tau.ac.il'
+      }
+    ],
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'Hebrew University-Hadassah Medical School',
+      url: 'https://medicine.ekmd.huji.ac.il/en'
+    },
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Israeli Rheumatology Association'
+    },
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Medical Specialty',
+        recognizedBy: {'@type': 'Organization', name: 'Israeli Medical Association'},
+        name: 'Specialist in Rheumatology'
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Medical Specialty',
+        recognizedBy: {'@type': 'Organization', name: 'Israeli Medical Association'},
+        name: 'Specialist in Internal Medicine'
+      }
+    ],
     knowsAbout: [
       'Rheumatoid Arthritis',
-      'SLE',
+      'Systemic Lupus Erythematosus (SLE)',
       'Scleroderma',
       'Vasculitis',
       'Gout',
       'Ankylosing Spondylitis',
-      'FMF'
+      'Familial Mediterranean Fever (FMF)',
+      'Psoriatic Arthritis',
+      'Polymyalgia Rheumatica',
+      'Behcet Disease',
+      'Connective Tissue Disease',
+      'Biologic Therapy',
+      'Disease-Modifying Antirheumatic Drugs (DMARDs)'
     ],
     url: baseSiteUrl,
-    telephone: '+972-3-9775355'
+    image: `${baseSiteUrl}/images/amit-doctor-portrait.jpg`,
+    telephone: '+972-3-9775355',
+    sameAs: [
+      'https://eng.sheba.co.il',
+      'https://www.doctorsonly.co.il/dr/amit-druyan',
+      'https://www.medreviews.co.il/provider/dr-druyan-amit'
+    ]
   };
 
   const clinicSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
-    name: 'Dr Amit Druyan Clinic',
+    '@id': `${baseSiteUrl}/#clinic`,
+    name: 'Dr Amit Druyan Rheumatology Clinic',
+    description:
+      'Private rheumatology and internal medicine clinic. Specialist care for FMF, rheumatoid arthritis, lupus, vasculitis, scleroderma, and all inflammatory rheumatic diseases.',
+    medicalSpecialty: 'Rheumatology',
     areaServed: 'Israel',
     telephone: '+972-3-9775355',
     url: baseSiteUrl,
+    physician: {'@id': `${baseSiteUrl}/#physician`},
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IL',
@@ -110,7 +175,7 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
               <p className="mb-6 max-w-2xl text-base text-slate-700 sm:text-lg">
                 {locale === 'he'
                   ? 'מומחה לראומטולוגיה ורפואה פנימית, נותן מענה למגוון מחלות דלקתיות ראומטולוגיות. מאבחן, מייעץ, מבצע מעקב אחר פעילות המחלה, ומתאים טיפול אישי המבוסס על הספרות המקצועית העדכנית ביותר.'
-                  : 'Senior physician in the Rheumatology Unit and FMF clinic. Professional diagnosis, clear plans and close follow-up.'}
+                  : 'Dr Amit Druyan is a board-certified rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer) with 20+ years of experience in FMF, rheumatoid arthritis, vasculitis, lupus, scleroderma and inflammatory arthritis.'}
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/book" locale={locale} className="btn-primary">
