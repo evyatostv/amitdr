@@ -55,7 +55,11 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
     description:
       'Dr Amit Druyan is a board-certified senior rheumatologist and internal medicine specialist at Sheba Medical Center (Tel HaShomer) with over 20 years of clinical experience. He leads acute inpatient arthritis care and runs the FMF clinic. He is a member of the Israeli Rheumatology Association and a lecturer at Tel Aviv University School of Medicine.',
     medicalSpecialty: ['Rheumatology', 'Internal Medicine'],
-    practicesAt: shebaAffiliation,
+    practicesAt: [
+      shebaAffiliation,
+      {'@id': `${baseSiteUrl}/#clinic`},
+      {'@id': `${baseSiteUrl}/#clinic-bmc`}
+    ],
     worksFor: shebaAffiliation,
     affiliation: [
       shebaAffiliation,
@@ -148,6 +152,32 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
     }
   };
 
+  const bmcClinicSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'PhysiciansOffice',
+    '@id': `${baseSiteUrl}/#clinic-bmc`,
+    name: 'BMC Medical Center',
+    alternateName: 'BMC מדיקל סנטר',
+    description:
+      'Additional private clinic where Dr Amit Druyan sees rheumatology and internal medicine patients by appointment.',
+    medicalSpecialty: 'Rheumatology',
+    areaServed: 'Israel',
+    telephone: '+972-3-9617777',
+    url: 'https://bmc-medical.co.il',
+    physician: {'@id': `${baseSiteUrl}/#physician`},
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 32.0688753,
+      longitude: 34.864949
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'IL',
+      addressLocality: 'Kiryat Ono',
+      streetAddress: 'HaDuvdevan 7'
+    }
+  };
+
   const treatmentHighlights =
     locale === 'he'
       ? [
@@ -174,6 +204,9 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
       </Script>
       <Script id="schema-clinic" type="application/ld+json">
         {JSON.stringify(clinicSchema)}
+      </Script>
+      <Script id="schema-clinic-bmc" type="application/ld+json">
+        {JSON.stringify(bmcClinicSchema)}
       </Script>
 
       <section className="hero-shell section-space pt-12 sm:pt-16">
@@ -341,29 +374,63 @@ export default async function HomePage({params}: {params: {locale: 'he' | 'en'}}
       <section className="section-space pt-0">
         <div className="container-main">
           <MotionReveal>
-            <h2 className="mb-3 text-2xl font-black text-slate-900 sm:text-3xl">
-              {locale === 'he' ? 'מיקום המרפאה' : 'Clinic Location'}
+            <h2 className="mb-2 text-2xl font-black text-slate-900 sm:text-3xl">
+              {locale === 'he' ? 'המרפאות הפרטיות' : 'Private Clinics'}
             </h2>
-            <p className="mb-4 text-slate-700">
+            <p className="mb-6 max-w-3xl text-slate-700">
               {locale === 'he'
-                ? 'דרך יצחק רבין 1, פתח תקווה, ישראל'
-                : 'Derech Yitshak Rabin 1, Petah Tikva, Israel'}
+                ? 'לצד תפקידו הבכיר במרכז הרפואי שיבא, ד״ר דרוין מקבל מטופלים פרטיים בשתי מרפאות: J Medical בפתח תקווה (קביעת תור אונליין) ו-BMC מדיקל סנטר בקריית אונו (בתיאום טלפוני).'
+                : 'Alongside his senior role at Sheba Medical Center, Dr. Druyan sees private patients at two clinics: J Medical in Petah Tikva (online booking) and BMC Medical Center in Kiryat Ono (by phone).'}
             </p>
           </MotionReveal>
-          <MotionReveal delay={0.08}>
-            <div className="card overflow-hidden p-2 sm:p-3">
-              <iframe
-                title={locale === 'he' ? 'מפת מיקום המרפאה' : 'Clinic location map'}
-                src="https://maps.google.com/maps?q=Derech%20Yitshak%20Rabin%201%2C%20Petah%20Tikva%2C%20Israel&z=16&output=embed"
-                width="100%"
-                height="340"
-                style={{border: 0}}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </MotionReveal>
+          <div className="grid gap-4 lg:grid-cols-2">
+            <MotionReveal delay={0.08}>
+              <article className="card h-full overflow-hidden p-2 sm:p-3">
+                <div className="px-2 pb-3 pt-2">
+                  <h3 className="text-lg font-semibold text-slate-900">J Medical</h3>
+                  <p className="text-sm text-slate-700">
+                    {locale === 'he'
+                      ? 'דרך יצחק רבין 1, פתח תקווה · קביעת תור אונליין'
+                      : 'Derech Yitzhak Rabin 1, Petah Tikva · Online booking'}
+                  </p>
+                </div>
+                <iframe
+                  title={locale === 'he' ? 'מפת מרפאת J Medical' : 'J Medical clinic map'}
+                  src="https://maps.google.com/maps?q=Derech%20Yitzhak%20Rabin%201%2C%20Petah%20Tikva%2C%20Israel&z=16&output=embed"
+                  width="100%"
+                  height="300"
+                  style={{border: 0}}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </article>
+            </MotionReveal>
+            <MotionReveal delay={0.12}>
+              <article className="card h-full overflow-hidden p-2 sm:p-3">
+                <div className="px-2 pb-3 pt-2">
+                  <h3 className="text-lg font-semibold text-slate-900">
+                    {locale === 'he' ? 'BMC מדיקל סנטר' : 'BMC Medical Center'}
+                  </h3>
+                  <p className="text-sm text-slate-700">
+                    {locale === 'he'
+                      ? 'הדובדבן 7, קריית אונו · תיאום טלפוני / וואטסאפ'
+                      : 'HaDuvdevan 7, Kiryat Ono · Phone / WhatsApp'}
+                  </p>
+                </div>
+                <iframe
+                  title={locale === 'he' ? 'מפת BMC מדיקל סנטר' : 'BMC Medical Center map'}
+                  src="https://maps.google.com/maps?q=32.0688753,34.8649490&z=16&output=embed"
+                  width="100%"
+                  height="300"
+                  style={{border: 0}}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </article>
+            </MotionReveal>
+          </div>
         </div>
       </section>
 

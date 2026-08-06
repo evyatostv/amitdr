@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://amitdr.com'),
   title: 'Dr Amit Druyan | Senior Rheumatologist – Sheba Medical Center',
   description:
-    'Dr Amit Druyan — senior rheumatologist and internal medicine specialist at Sheba Medical Center. Expert in FMF, rheumatoid arthritis, vasculitis, lupus, scleroderma and inflammatory arthritis. 20+ years clinical experience. Private clinic in Petah Tikva.',
+    'Dr Amit Druyan — senior rheumatologist and internal medicine specialist at Sheba Medical Center. Expert in FMF, rheumatoid arthritis, vasculitis, lupus, scleroderma and inflammatory arthritis. 20+ years clinical experience. Private clinics in Petah Tikva (J Medical) and Kiryat Ono (BMC).',
   icons: {
     icon: [
       {url: withBasePath('/images/logo-icon.png'), type: 'image/png'},

@@ -88,6 +88,12 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
                   <p>
                     נוסף לעבודתו הקלינית, ד״ר דרוין מרצה לרפואה פנימית בפקולטה לרפואה של אוניברסיטת תל אביב.
                   </p>
+
+                  <p>
+                    בפרטי ד״ר דרוין מקבל בשתי מרפאות: J Medical בפתח תקווה (דרך יצחק רבין 1, מגדלי Global Towers,
+                    בניין A קומה 12) — עם קביעת תור אונליין; ו-BMC מדיקל סנטר בקריית אונו (הדובדבן 7) — בתיאום טלפוני
+                    או בוואטסאפ. מטופלי מכבי יכולים לקבוע דרך הקופה.
+                  </p>
                 </div>
               ) : (
                 <div className="space-y-4 text-slate-700">
@@ -116,8 +122,9 @@ export default async function AboutPage({params}: {params: {locale: 'he' | 'en'}
                     close long-term follow-up adjusted to their response.
                   </p>
                   <p>
-                    Private clinic appointments are available at J Medical, Derech Yitzhak Rabin 1, Petah Tikva
-                    (Global Towers, Building A, 12th floor). Maccabi HMO patients can book through the fund.
+                    Dr Druyan sees private patients at two clinics: J Medical, Derech Yitzhak Rabin 1, Petah Tikva
+                    (Global Towers, Building A, 12th floor), where appointments can be booked online; and BMC Medical
+                    Center, HaDuvdevan 7, Kiryat Ono, by phone or WhatsApp. Maccabi HMO patients can book through the fund.
                   </p>
                 </div>
               )}
