@@ -25,6 +25,7 @@ export function CookieBanner({locale}: {locale: Locale}) {
   const saveConsent = (value: 'accepted' | 'essential') => {
     try {
       window.localStorage.setItem(STORAGE_KEY, value);
+      window.dispatchEvent(new Event('analytics-consent-changed'));
       const raw = window.localStorage.getItem(LOG_STORAGE_KEY);
       const parsed = raw ? JSON.parse(raw) : [];
       const next = [
